@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/simbongsa/static/css/main.245f4c7c.chunk.css",
+    "main.js": "/simbongsa/static/js/main.7ebb088f.chunk.js",
+    "main.js.map": "/simbongsa/static/js/main.7ebb088f.chunk.js.map",
+    "runtime-main.js": "/simbongsa/static/js/runtime-main.a9e386c1.js",
+    "runtime-main.js.map": "/simbongsa/static/js/runtime-main.a9e386c1.js.map",
+    "static/css/2.de33bdbc.chunk.css": "/simbongsa/static/css/2.de33bdbc.chunk.css",
+    "static/js/2.24d6ff68.chunk.js": "/simbongsa/static/js/2.24d6ff68.chunk.js",
+    "static/js/2.24d6ff68.chunk.js.map": "/simbongsa/static/js/2.24d6ff68.chunk.js.map",
+    "index.html": "/simbongsa/index.html",
+    "precache-manifest.b25a283f054da9d8ff46450e91d72912.js": "/simbongsa/precache-manifest.b25a283f054da9d8ff46450e91d72912.js",
+    "service-worker.js": "/simbongsa/service-worker.js",
+    "static/css/2.de33bdbc.chunk.css.map": "/simbongsa/static/css/2.de33bdbc.chunk.css.map",
+    "static/css/main.245f4c7c.chunk.css.map": "/simbongsa/static/css/main.245f4c7c.chunk.css.map",
+    "static/js/2.24d6ff68.chunk.js.LICENSE.txt": "/simbongsa/static/js/2.24d6ff68.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/simbongsa/static/media/outline-icons.ef60a4f6.woff",
+    "static/media/location_marker.png": "/simbongsa/static/media/location_marker.e6d7c38a.png",
+    "static/media/selected_marker.png": "/simbongsa/static/media/selected_marker.514c0acb.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a9e386c1.js",
+    "static/css/2.de33bdbc.chunk.css",
+    "static/js/2.24d6ff68.chunk.js",
+    "static/css/main.245f4c7c.chunk.css",
+    "static/js/main.7ebb088f.chunk.js"
+  ]
+}
