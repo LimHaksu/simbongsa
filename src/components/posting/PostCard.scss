@@ -1,0 +1,61 @@
+@import './mixin';
+
+div.ui.card div.content div.description {
+    /* 한 줄 자르기 */
+    display: inline-block;
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* 여러 줄 자르기 추가 스타일 */
+    white-space: normal;
+    line-height: 1.2;
+    height: 3.6rem;
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+div.ui.modal.transition.visible.active div.content div.description {
+    word-break: break-all;
+}
+
+div.ui.page.modals.dimmer.transition.visible.active div.ui.modal.transition.visible.active div.actions {
+    padding-bottom: 0px !important;
+}
+
+div.ui.page.modals.dimmer.transition.visible.active div.ui.modal.transition.visible.active div.actions button.ui.primary {
+    background-color: rgba(255, 136, 0, 0.493);
+}
+
+div.ui.card {
+    margin: auto;
+    margin-top: 1.5rem !important;
+    width: 330px;
+    @include respond-to('large') {
+        width: 600px;
+    }
+    @include respond-to('small') {
+        width: 330px;
+    }
+    .content
+    {.header{
+        #prefer{
+        font-size: 11px;
+        height: 15px;
+        position: relative;
+        top : -30px;
+        width : 170px;
+        @include respond-to('large') {
+            left: 360px;
+        }
+        @include respond-to('small') {
+            transform : translateX(50%)
+        }
+        }
+    }
+    }
+}
+

@@ -1,0 +1,13 @@
+@import './mixin';
+
+/* 모달의 크기 수정하는 css입니다. */
+div.ui.fullscreen.modal.transition.visible.active {
+  position: relative;
+  margin: auto;
+  @include respond-to('small') {
+    width: 80%!important;  
+  }
+  @include respond-to('large') {
+    width: 350px!important;  
+  }
+}

@@ -1,0 +1,25 @@
+div.ui.menu {
+    text-shadow: orange;
+}
+
+.ui.menu a {
+    display: block;
+    margin: auto;
+}
+
+.ui.menu a.item {
+    text-shadow: orange;
+}
+
+.ui .borderless .menu {
+    /* margin-top: 0 !important; */
+}
+
+.ui.borderless.bottom.fixed.three.item.menu a.active.item {
+    /* background-color: rgba(255, 136, 0, 0.24); */
+    font-weight: bold;
+}
+
+.ui.menu .item>i.icon {
+    margin: auto;
+}

@@ -1,0 +1,127 @@
+$breakpoints: (
+        'very-small': (max-width: 270px),
+        'small': (min-width: 271px),
+) !default;
+
+@mixin respond-to($breakpoint) {
+    // If the key exists in the map
+    @if map-has-key($breakpoints, $breakpoint) {
+        // Prints a media query based on the value
+        @media #{inspect(map-get($breakpoints, $breakpoint))} {
+            @content;
+        }
+    }
+    // If the key doesn't exist in the map
+    @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+}
+
+.user-profile  {
+    padding: 0.2rem;
+    font-size: 1rem;
+    position : relative;
+    // width: 100vw;
+    // left: 50%;
+    // top: 1.5rem;
+    // transform: translateX(5.5rem);
+}
+
+#follow-button-mini{
+    width : 90px;
+    position: relative;
+    @include respond-to('very-small') {
+        top : -0.2rem;
+    }
+    @include respond-to('small') {
+        top : -2.5rem;
+        left : 9.4rem;
+    }
+    button.ui.orange.button{
+        padding: 0.2rem;
+        font-size: 1rem;
+        position : relative;
+    }
+}
+#follow-button{
+    button.ui.orange.button{
+        padding: 0.2rem;
+        font-size: 1rem;
+        position : relative;
+    }
+}
+#userpage{
+    position:relative;
+    width: 270px;
+    margin : 0 auto;
+    // margin-left : -110px;
+}
+#userpage-mini{
+    @include respond-to('small') {
+        height : 50px;
+    }
+    @include respond-to('very-small') {
+        height : 70px;
+    }
+}
+div.user-profile{
+    font-size: 0.75rem;
+    color: rgb(156, 156, 156);
+    position : relative;
+    
+    #profileImage{
+        // position: relative;
+        display : inline;
+        cursor: pointer;
+    }
+    #userId{
+        position: absolute;
+        display: block;
+        font-weight: 700;
+        top: 3rem;
+        left : 10rem;
+        font-size: 1.28571429rem;
+        // margin-top: -.21425rem;
+        line-height: 1.28571429rem;
+        color: rgba(0,0,0,.85);
+        #follow{
+            div{
+                display: inline;
+            }
+            font-size: 0.75rem;
+            color: rgb(156, 156, 156);
+            position: relative;
+        }
+        cursor: pointer;
+    }
+    #userId-mini{
+        position: relative;
+        display: block;
+        font-weight: 700;
+        top: -3rem;
+        left : 4rem;
+        font-size: 1.28571429rem;
+        width : 200px;
+        // margin-top: -.21425rem;
+        line-height: 1.28571429rem;
+        color: rgba(0,0,0,.85);
+        #follow{
+            div{
+                display: inline;
+            }
+            font-size: 0.75rem;
+            color: rgb(156, 156, 156);
+            position: relative;
+        }
+        cursor: pointer;
+    }
+    // div{
+    //     display: inline;
+    //     margin-right: 1rem;
+    //     // span{
+    //     //     position: relative;
+    //     //     left : 40px;
+    //     // }
+    // }
+}

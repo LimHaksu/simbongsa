@@ -1,0 +1,288 @@
+@import '../_mixin';
+
+// @mixin fill {
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+// }
+
+// .transiton-page{
+//     top: 0;
+//     transition: opacity 0.3s;
+// }
+
+// 오른쪽에서 왼쪽 방향으로 나타남
+.transiton-page-left-enter{
+    @include respond-to('small') {
+        position : absolute;
+        transform: translateX(100%);
+    }
+    @include respond-to('large') {
+        position : relative;
+    }
+}
+
+.transiton-page-left-enter-active {
+    @include respond-to('small') {
+        position : absolute;
+        transform: translateX(0);
+        transition: transform 300ms;
+    }    
+    @include respond-to('large') {
+        position : relative;
+    }
+}
+
+.transiton-page-left-exit {
+    @include respond-to('small') {
+        position : absolute;
+        opacity : 1;
+        // transform: translateX(0);
+    }    
+    @include respond-to('large') {
+        position : absolute;
+        opacity : 0;
+        display : none;
+    }
+  }
+.transiton-page-left-exit-active {
+    @include respond-to('small') {
+        position : absolute;
+        // transform: translateX(-100%);
+        opacity: 0;
+        transition: opacity 300ms;//transform 300ms;
+    }
+    @include respond-to('large') {
+        position : absolute;
+        opacity : 0;
+        display : none;
+    }
+}
+
+// 왼쪽에서 오른쪽 방향으로 나타남
+.transiton-page-right-enter{
+    @include respond-to('small') {
+        position : absolute;
+        transform: translateX(-100%);
+    }
+    @include respond-to('large') {
+        position : relative;
+    }
+}
+
+.transiton-page-right-enter-active {
+    @include respond-to('small') {
+        position : absolute;
+        transform: translateX(0);
+        transition:  transform 300ms;
+    }
+    @include respond-to('large') {
+        position : relative;
+    }
+}
+
+.transiton-page-right-exit {
+    @include respond-to('small') {
+        position : absolute;
+        // transform: translateX(0);
+        opacity : 1;
+    }
+    @include respond-to('large') {
+        position : absolute;
+        opacity : 0;
+        display : none;
+    }
+  }
+.transiton-page-right-exit-active {
+    @include respond-to('small') {
+        position : absolute;
+        // transform: translateX(100%);
+        opacity : 0;
+        transition: opacity 300ms;// transform 300ms;
+    }
+    @include respond-to('large') {
+        position : absolute;
+        opacity : 0;
+        display : none;
+    }
+}
+
+// 즉시 나타나고 사라짐
+.transiton-page-disappear-enter{
+    position : relative;
+}
+
+.transiton-page-disappear-active {
+    position : relative;
+}
+
+.transiton-page-disappear-exit {
+    position : absolute;
+    opacity : 0;
+    display : none;
+}
+.transiton-page-disappear-exit-active {
+    position : absolute;
+    opacity : 0;
+    display : none;
+}
+
+
+// .page {
+//   width: 100vw;
+//   height: 100vh;
+//   background-size: cover;
+//   background-position: center;
+// }
+
+// .footer {
+//   @include fill;
+//   top: auto;
+//   z-index: 100;
+//   display: flex;
+//   height: 44px;
+//   background-color: #FFFFFF;
+// }
+
+// .footer a {
+//   flex: 1;
+//   line-height: 44px;
+//   text-align: center;
+// }
+
+// .transitionPage {
+//   max-width: 100vw;
+// }
+
+// .trans {
+//   width: 100vw;
+//   transition: $timing;
+//   transition-timing-function: ease;
+
+//   &.enter {
+//     z-index: 10;
+//   }
+
+//   &.exit {
+//     z-index: 9;
+//   }
+
+//   &.active {
+//     position: fixed;
+//   }
+
+//   &.done {
+//     position: relative !important;
+//     transform: none !important;
+//   }
+// }
+
+// .toLeft.enter {
+//   @include fill;
+//   transform: translateX(-20px);
+
+//   &.active,
+//   &.done {
+//     transform: translateX(0);
+//   }
+
+//   + .exit {
+//     transform: translateX(0) !important;
+
+//     &.active {
+//       transform: translateX(20px) !important;
+//     }
+//   }
+// }
+
+// .toLeft.exit {
+//   @include fill;
+
+//   &.active {
+//     transform: translateX(20px);
+//   }
+
+//   + .enter {
+//     transform: translateX(-20px) !important;
+
+//     &.active,
+//     &.done {
+//       transform: translateX(0) !important;
+//     }
+//   }
+// }
+
+
+// .toRight.enter {
+//   @include fill;
+//   transform: translateX(20px);
+
+//   &.active,
+//   &.done {
+//     transform: translateX(0);
+//   }
+
+//   + .exit {
+//     transform: translateX(0) !important;
+
+//     &.active,
+//     &.done {
+//       transform: translateX(-20px) !important;
+//     }
+//   }
+// }
+
+// .toRight.exit {
+//   @include fill;
+
+//   &.active {
+//     transform: translateX(-20px);
+//   }
+
+//   + .enter {
+//     transform: translateX(20px) !important;
+
+//     &.active,
+//     &.done {
+//       transform: translateX(0) !important;
+//     }
+//   }
+// }
+
+// .enter {
+//   opacity: 0;
+
+//   &.active,
+//   &.done {
+//     opacity: 1;
+//   }
+// }
+
+// .exit {
+//   opacity: 1;
+
+//   &.active,
+//   &.done {
+//     opacity: 0;
+//   }
+// }
+
+
+// .default-trans-enter {
+//   @include fill;
+//   transform: translateX(20px);
+
+//   &.default-trans-enter-active {
+//     transform: translateX(0);
+//   }
+// }
+
+// .default-trans-exit {
+//   @include fill;
+
+//   &.default-trans-exit-active {
+//     transform: translateX(-20px);
+//   }
+// }

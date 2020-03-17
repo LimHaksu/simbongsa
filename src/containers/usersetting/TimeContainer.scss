@@ -1,0 +1,14 @@
+@import './mixin';
+
+div.ui.checkbox{
+    margin-right: 10px;
+}
+
+#time-bar{
+    @include respond-to('small') {
+        width:97%;
+    }
+    @include respond-to('large') {
+        width:300px;
+    }
+}

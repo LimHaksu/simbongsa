@@ -1,0 +1,8 @@
+div.ui.label {
+    padding: 0.2rem;
+    font-size: 1rem;
+}
+
+div.ui.label.working {
+    background-color: rgba(255, 136, 0, 0.493);
+}

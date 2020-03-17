@@ -1,0 +1,31 @@
+div.tag {
+      color: white;
+      margin-right: 2px;
+      display: inline;
+      border-radius: 5px;
+}
+a.ui.tiny.label, .ui.tiny.labels .label {
+      font-size: 1rem;
+      padding: 0.4rem;
+
+}
+a.ui.label.iscert {
+      /* background-color: rgba(255, 42, 70, 0.356); */
+      background-color: rgba(255, 147, 45, 0.61);
+    }
+a.ui.label.full {
+      background-color: rgba(189, 189, 189, 0.596);
+    }
+a.ui.label.n-full {
+      background-color: rgba(0, 172, 224, 0.479);
+    }
+a.ui.label.w-full {
+      background-color: rgba(164, 216, 129, 0.856);
+    }
+a.ui.label#true {
+      visibility: visible;
+    }
+a.ui.label#false {
+      visibility: hidden;
+    }
+

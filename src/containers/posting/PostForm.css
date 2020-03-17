@@ -1,0 +1,24 @@
+form.ui.form textarea {
+    height: 500px;
+}
+
+form.ui.form label {
+    font-size: 1.05rem;
+    margin-right: 1rem;
+}
+
+form.ui.form button {
+    margin: auto;
+}
+
+.buttons button.ui.orange.button {
+    padding: .78571429rem 1.5rem .78571429rem;
+    color: rgb(97, 97, 97);
+    background-color: rgb(187, 187, 187);
+}
+
+div.buttons {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+}

@@ -1,0 +1,30 @@
+div.header .ui .borderless.top.fixed.three.item.menu {
+    justify-content: none;
+}
+
+div.header .ui.menu .item {
+    padding: 0.6rem;
+    margin-left: 0.5rem !important;
+}
+
+.ui.menu .item>i.icon {
+    margin: 0 .35714286rem 0 0;
+    
+}
+
+div.header .ui.menu div.item.icons {
+    justify-content: flex-end;
+    color: rgb(88, 88, 88)
+}
+
+div.header .ui.menu div.item.goHome {
+    justify-content: flex-start;
+}
+
+div.header .ui.menu div.item.located {
+    font-size: medium;
+}
+
+div.ui.item.menu .dropdown .menu .item{
+    width: 90%
+}

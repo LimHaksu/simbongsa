@@ -1,0 +1,4 @@
+{
+  "ext": "css json ts tsx",
+  "exec": "npm run clean && npm run build:dev && ts-node server/index"
+}

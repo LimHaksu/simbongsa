@@ -1,0 +1,33 @@
+.infinite-scroll-component p {
+    display: block;
+    max-width: 290px;
+    margin-left: 3rem;
+    margin-top: 1rem;
+}
+
+div.listtitle {
+    word-break: normal;
+    line-height: 1.5rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.2rem;
+    font-size: 1.1rem;   
+}
+
+div.list{
+    /* padding: 0.4em; */
+    padding: 0.6rem;
+    /* padding-bottom: 0.8em; */
+    border-bottom: solid .5px lightgray;
+}
+
+div.linktodetail {
+    display: inline;
+    float: right;
+    
+}
+
+div.linktodetail a {
+    text-decoration: none;
+    color: orange;
+    font-size: 1rem;
+}

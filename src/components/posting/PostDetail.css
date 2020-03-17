@@ -1,0 +1,44 @@
+div.ui.modal.transition.visible.active div.actions {
+    padding-bottom: 14px !important;
+}
+div.label{
+    display: flex;
+    justify-content: center;
+}
+
+div.postedImage{
+    display: flex;
+    justify-content: center;
+}
+
+div.postContent{
+    color: black !important;
+}
+
+div.comment{
+    color: black !important;
+}
+
+div.comment div {
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+div.listtitle {
+    word-break: normal;
+    line-height: 1.5rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.2rem;
+    font-size: 1rem;
+    color:black   
+}
+
+div.list{
+    /* padding: 0.4rem; */
+    padding: 0.6rem;
+    /* padding-bottom: 0.8rem; */
+    border-bottom: solid .5px lightgray;
+}
+
+
+

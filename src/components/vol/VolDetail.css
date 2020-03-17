@@ -1,0 +1,70 @@
+.ui .celled .unstackable .table {
+    padding: 10px;
+}
+
+td.head {
+    font-weight: 600;
+    border-left: none;
+    border-right: none;
+    font-size: 1.05rem;
+    /* width: 77px; */
+}
+
+td.content {
+    word-break: keep-all;
+    font-size: 1.05rem;
+}
+
+td.content.detail {
+    word-break: normal;
+}
+
+table.ui.table {
+    border: none;
+    border-bottom: 1px solid rgba(34, 36, 38, .1);
+    border-top: 1px solid rgba(34, 36, 38, .1);
+}
+
+div.buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+
+div.buttons a {
+    margin: auto;
+}
+
+
+.buttons button.ui.button {
+    margin: 0;
+    background-color: rgba(255, 136, 0, 0.493);
+    padding: 1rem;
+
+}
+
+
+a button:hover {
+    color: orange;
+}
+
+a.ui.button {
+    margin: auto;
+    padding: 1rem;
+    background-color: #FD7317;
+    color: white
+}
+
+a.ui.button.false {
+    font-size: 0.9rem;
+}
+
+div.title {
+    line-height: 1.8rem;
+    word-break: keep-all;
+    padding: 0.7rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+
+}

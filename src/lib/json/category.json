@@ -1,0 +1,421 @@
+[{
+    "ca_id": 1,
+    "ca_lowCd": "0101",
+    "ca_lowNm": "활동보조",
+    "ca_highCd": "0100",
+    "ca_highNm": "생활편의지원"
+}, {
+    "ca_id": 2,
+    "ca_lowCd": "0102",
+    "ca_lowNm": "이동지원",
+    "ca_highCd": "0100",
+    "ca_highNm": "생활편의지원"
+}, {
+    "ca_id": 3,
+    "ca_lowCd": "0103",
+    "ca_lowNm": "청결지도",
+    "ca_highCd": "0100",
+    "ca_highNm": "생활편의지원"
+}, {
+    "ca_id": 4,
+    "ca_lowCd": "0104",
+    "ca_lowNm": "급식지원",
+    "ca_highCd": "0100",
+    "ca_highNm": "생활편의지원"
+}, {
+    "ca_id": 5,
+    "ca_lowCd": "0105",
+    "ca_lowNm": "식사.반찬지원",
+    "ca_highCd": "0100",
+    "ca_highNm": "생활편의지원"
+}, {
+    "ca_id": 6,
+    "ca_lowCd": "0199",
+    "ca_lowNm": "기타",
+    "ca_highCd": "0100",
+    "ca_highNm": "생활편의지원"
+}, {
+    "ca_id": 7,
+    "ca_lowCd": "0201",
+    "ca_lowNm": "주거개선",
+    "ca_highCd": "0200",
+    "ca_highNm": "주거환경"
+}, {
+    "ca_id": 8,
+    "ca_lowCd": "0202",
+    "ca_lowNm": "마을공동체활동",
+    "ca_highCd": "0200",
+    "ca_highNm": "주거환경"
+}, {
+    "ca_id": 9,
+    "ca_lowCd": "0299",
+    "ca_lowNm": "기타",
+    "ca_highCd": "0200",
+    "ca_highNm": "주거환경"
+}, {
+    "ca_id": 10,
+    "ca_lowCd": "0301",
+    "ca_lowNm": "말벗.상담",
+    "ca_highCd": "0300",
+    "ca_highNm": "상담"
+}, {
+    "ca_id": 11,
+    "ca_lowCd": "0302",
+    "ca_lowNm": "전문상담",
+    "ca_highCd": "0300",
+    "ca_highNm": "상담"
+}, {
+    "ca_id": 12,
+    "ca_lowCd": "0399",
+    "ca_lowNm": "기타",
+    "ca_highCd": "0300",
+    "ca_highNm": "상담"
+}, {
+    "ca_id": 13,
+    "ca_lowCd": "0401",
+    "ca_lowNm": "방과후 교육",
+    "ca_highCd": "0400",
+    "ca_highNm": "교육"
+}, {
+    "ca_id": 14,
+    "ca_lowCd": "0402",
+    "ca_lowNm": "학습지도 교육",
+    "ca_highCd": "0400",
+    "ca_highNm": "교육"
+}, {
+    "ca_id": 15,
+    "ca_lowCd": "0403",
+    "ca_lowNm": "특수교육",
+    "ca_highCd": "0400",
+    "ca_highNm": "교육"
+}, {
+    "ca_id": 16,
+    "ca_lowCd": "0404",
+    "ca_lowNm": "평생교육",
+    "ca_highCd": "0400",
+    "ca_highNm": "교육"
+}, {
+    "ca_id": 17,
+    "ca_lowCd": "0405",
+    "ca_lowNm": "전문교육",
+    "ca_highCd": "0400",
+    "ca_highNm": "교육"
+}, {
+    "ca_id": 18,
+    "ca_lowCd": "0406",
+    "ca_lowNm": "진로체험지도",
+    "ca_highCd": "0400",
+    "ca_highNm": "교육"
+}, {
+    "ca_id": 19,
+    "ca_lowCd": "0499",
+    "ca_lowNm": "기타",
+    "ca_highCd": "0400",
+    "ca_highNm": "교육"
+}, {
+    "ca_id": 20,
+    "ca_lowCd": "0501",
+    "ca_lowNm": "간호.간병",
+    "ca_highCd": "0500",
+    "ca_highNm": "보건의료"
+}, {
+    "ca_id": 21,
+    "ca_lowCd": "0502",
+    "ca_lowNm": "의료지원",
+    "ca_highCd": "0500",
+    "ca_highNm": "보건의료"
+}, {
+    "ca_id": 22,
+    "ca_lowCd": "0503",
+    "ca_lowNm": "헌혈",
+    "ca_highCd": "0500",
+    "ca_highNm": "보건의료"
+}, {
+    "ca_id": 24,
+    "ca_lowCd": "0599",
+    "ca_lowNm": "기타",
+    "ca_highCd": "0500",
+    "ca_highNm": "보건의료"
+}, {
+    "ca_id": 25,
+    "ca_lowCd": "0601",
+    "ca_lowNm": "일손지원",
+    "ca_highCd": "0600",
+    "ca_highNm": "농어촌 봉사"
+}, {
+    "ca_id": 26,
+    "ca_lowCd": "0699",
+    "ca_lowNm": "기타",
+    "ca_highCd": "0600",
+    "ca_highNm": "농어촌 봉사"
+}, {
+    "ca_id": 27,
+    "ca_lowCd": "0701",
+    "ca_lowNm": "행사보조",
+    "ca_highCd": "0700",
+    "ca_highNm": "문화행사"
+}, {
+    "ca_id": 28,
+    "ca_lowCd": "0702",
+    "ca_lowNm": "공연활동",
+    "ca_highCd": "0700",
+    "ca_highNm": "문화행사"
+}, {
+    "ca_id": 29,
+    "ca_lowCd": "0703",
+    "ca_lowNm": "캠페인",
+    "ca_highCd": "0700",
+    "ca_highNm": "문화행사"
+}, {
+    "ca_id": 30,
+    "ca_lowCd": "0704",
+    "ca_lowNm": "관광안내",
+    "ca_highCd": "0700",
+    "ca_highNm": "문화행사"
+}, {
+    "ca_id": 31,
+    "ca_lowCd": "0705",
+    "ca_lowNm": "사진촬영",
+    "ca_highCd": "0700",
+    "ca_highNm": "문화행사"
+}, {
+    "ca_id": 32,
+    "ca_lowCd": "0799",
+    "ca_lowNm": "기타",
+    "ca_highCd": "0700",
+    "ca_highNm": "문화행사"
+}, {
+    "ca_id": 33,
+    "ca_lowCd": "0801",
+    "ca_lowNm": "환경정화",
+    "ca_highCd": "0800",
+    "ca_highNm": "환경보호"
+}, {
+    "ca_id": 34,
+    "ca_lowCd": "0802",
+    "ca_lowNm": "환경감시",
+    "ca_highCd": "0800",
+    "ca_highNm": "환경보호"
+}, {
+    "ca_id": 35,
+    "ca_lowCd": "0899",
+    "ca_lowNm": "기타",
+    "ca_highCd": "0800",
+    "ca_highNm": "환경보호"
+}, {
+    "ca_id": 36,
+    "ca_lowCd": "0901",
+    "ca_lowNm": "사무지원",
+    "ca_highCd": "0900",
+    "ca_highNm": "행정보조"
+}, {
+    "ca_id": 37,
+    "ca_lowCd": "0902",
+    "ca_lowNm": "업무지원",
+    "ca_highCd": "0900",
+    "ca_highNm": "행정보조"
+}, {
+    "ca_id": 38,
+    "ca_lowCd": "0999",
+    "ca_lowNm": "기타",
+    "ca_highCd": "0900",
+    "ca_highNm": "행정보조"
+}, {
+    "ca_id": 39,
+    "ca_lowCd": "1001",
+    "ca_lowNm": "지역안전",
+    "ca_highCd": "1000",
+    "ca_highNm": "안전.예방"
+}, {
+    "ca_id": 40,
+    "ca_lowCd": "1002",
+    "ca_lowNm": "교통안전",
+    "ca_highCd": "1000",
+    "ca_highNm": "안전.예방"
+}, {
+    "ca_id": 41,
+    "ca_lowCd": "1003",
+    "ca_lowNm": "어린이 안전",
+    "ca_highCd": "1000",
+    "ca_highNm": "안전.예방"
+}, {
+    "ca_id": 42,
+    "ca_lowCd": "1004",
+    "ca_lowNm": "청소년 안전",
+    "ca_highCd": "1000",
+    "ca_highNm": "안전.예방"
+}, {
+    "ca_id": 43,
+    "ca_lowCd": "1005",
+    "ca_lowNm": "취약계층 안전",
+    "ca_highCd": "1000",
+    "ca_highNm": "안전.예방"
+}, {
+    "ca_id": 44,
+    "ca_lowCd": "1099",
+    "ca_lowNm": "기타",
+    "ca_highCd": "1000",
+    "ca_highNm": "안전.예방"
+}, {
+    "ca_id": 45,
+    "ca_lowCd": "1101",
+    "ca_lowNm": "인권개선",
+    "ca_highCd": "1100",
+    "ca_highNm": "공익.인권"
+}, {
+    "ca_id": 46,
+    "ca_lowCd": "1102",
+    "ca_lowNm": "공익보호",
+    "ca_highCd": "1100",
+    "ca_highNm": "공익.인권"
+}, {
+    "ca_id": 47,
+    "ca_lowCd": "1199",
+    "ca_lowNm": "기타",
+    "ca_highCd": "1100",
+    "ca_highNm": "공익.인권"
+}, {
+    "ca_id": 48,
+    "ca_lowCd": "1201",
+    "ca_lowNm": "피해복구",
+    "ca_highCd": "1200",
+    "ca_highNm": "재해ㆍ재난"
+}, {
+    "ca_id": 49,
+    "ca_lowCd": "1202",
+    "ca_lowNm": "긴급구조",
+    "ca_highCd": "1200",
+    "ca_highNm": "재해ㆍ재난"
+}, {
+    "ca_id": 50,
+    "ca_lowCd": "1299",
+    "ca_lowNm": "기타",
+    "ca_highCd": "1200",
+    "ca_highNm": "재해ㆍ재난"
+}, {
+    "ca_id": 51,
+    "ca_lowCd": "1301",
+    "ca_lowNm": "해외봉사",
+    "ca_highCd": "1300",
+    "ca_highNm": "국제협력.해외봉사"
+}, {
+    "ca_id": 52,
+    "ca_lowCd": "1302",
+    "ca_lowNm": "국제행사단체지원",
+    "ca_highCd": "1300",
+    "ca_highNm": "국제협력.해외봉사"
+}, {
+    "ca_id": 53,
+    "ca_lowCd": "1303",
+    "ca_lowNm": "통.번역",
+    "ca_highCd": "1300",
+    "ca_highNm": "국제협력.해외봉사"
+}, {
+    "ca_id": 54,
+    "ca_lowCd": "1399",
+    "ca_lowNm": "기타",
+    "ca_highCd": "1300",
+    "ca_highNm": "국제협력.해외봉사"
+}, {
+    "ca_id": 55,
+    "ca_lowCd": "1401",
+    "ca_lowNm": "멘토링",
+    "ca_highCd": "1400",
+    "ca_highNm": "멘토링"
+}, {
+    "ca_id": 56,
+    "ca_lowCd": "1402",
+    "ca_lowNm": "학습",
+    "ca_highCd": "1400",
+    "ca_highNm": "멘토링"
+}, {
+    "ca_id": 57,
+    "ca_lowCd": "1403",
+    "ca_lowNm": "진로적성",
+    "ca_highCd": "1400",
+    "ca_highNm": "멘토링"
+}, {
+    "ca_id": 58,
+    "ca_lowCd": "1404",
+    "ca_lowNm": "취업",
+    "ca_highCd": "1400",
+    "ca_highNm": "멘토링"
+}, {
+    "ca_id": 59,
+    "ca_lowCd": "1405",
+    "ca_lowNm": "창업",
+    "ca_highCd": "1400",
+    "ca_highNm": "멘토링"
+}, {
+    "ca_id": 60,
+    "ca_lowCd": "1406",
+    "ca_lowNm": "기타",
+    "ca_highCd": "1400",
+    "ca_highNm": "멘토링"
+}, {
+    "ca_id": 61,
+    "ca_lowCd": "1501",
+    "ca_lowNm": "기타",
+    "ca_highCd": "1500",
+    "ca_highNm": "기타"
+}, {
+    "ca_id": 62,
+    "ca_lowCd": "1701",
+    "ca_lowNm": "자원봉사기본교육",
+    "ca_highCd": "1700",
+    "ca_highNm": "자원봉사교육"
+}, {
+    "ca_id": 63,
+    "ca_lowCd": "1702",
+    "ca_lowNm": "자원봉사보수교육",
+    "ca_highCd": "1700",
+    "ca_highNm": "자원봉사교육"
+}, {
+    "ca_id": 64,
+    "ca_lowCd": "1703",
+    "ca_lowNm": "자원봉사전문교육",
+    "ca_highCd": "1700",
+    "ca_highNm": "자원봉사교육"
+}, {
+    "ca_id": 65,
+    "ca_lowCd": "1704",
+    "ca_lowNm": "자원봉사기타교육.관리자교육",
+    "ca_highCd": "1700",
+    "ca_highNm": "자원봉사교육"
+}, {
+    "ca_id": 66,
+    "ca_lowCd": "1705",
+    "ca_lowNm": "자원봉사기타교육.지도자교육",
+    "ca_highCd": "1700",
+    "ca_highNm": "자원봉사교육"
+}, {
+    "ca_id": 67,
+    "ca_lowCd": "1706",
+    "ca_lowNm": "자원봉사기타교육.상담사교육",
+    "ca_highCd": "1700",
+    "ca_highNm": "자원봉사교육"
+}, {
+    "ca_id": 68,
+    "ca_lowCd": "1707",
+    "ca_lowNm": "자원봉사기타교육.수요처교육",
+    "ca_highCd": "1700",
+    "ca_highNm": "자원봉사교육"
+}, {
+    "ca_id": 69,
+    "ca_lowCd": "1708",
+    "ca_lowNm": "자원봉사기타교육.기타교육",
+    "ca_highCd": "1700",
+    "ca_highNm": "자원봉사교육"
+}, {
+    "ca_id": 70,
+    "ca_lowCd": "1801",
+    "ca_lowNm": "2018 평창 동계올림픽대회 및 동계패럴림픽대회",
+    "ca_highCd": "1800",
+    "ca_highNm": "국제행사"
+}, {
+    "ca_id": 71,
+    "ca_lowCd": "1802",
+    "ca_lowNm": "광주 세계수영선수권대회",
+    "ca_highCd": "1800",
+    "ca_highNm": "국제행사"
+}]

@@ -1,0 +1,51 @@
+div.ui.right.aligned.container button {
+    box-shadow: none !important;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+
+div.ui.right.aligned.container button div {
+    display: inline;
+    padding: 0rem !important;
+    margin-top: 0.5rem;
+}
+
+div.ui.right.aligned.container button span {
+    padding: 0.8rem !important;
+}
+
+span.message {
+    margin-right: 1rem;
+    align-self: start;
+    color: rgb(112, 112, 112);
+}
+a.link {
+    text-decoration: none;
+    color: rgba(255, 136, 0, 0.897);
+    font-weight: bold;
+}
+
+div.policy {
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    color: gray;
+    text-align: left;
+}
+
+button.login {
+    border-radius: 10rem;
+    /* box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5) !important; */
+    border: solid 3px transparent !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(280deg, #bd0039e0, #e24949c2) !important;
+    background-origin: border-box !important;
+    background-clip: content-box, border-box !important;
+  }
+  
+  button.login:hover {
+    box-shadow: none !important;
+    color: white !important;
+  }

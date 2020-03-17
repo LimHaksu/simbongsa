@@ -1,0 +1,10 @@
+button.ui.button.label {
+    /* background-color: #FD7317; */
+    background-color: rgba(255, 136, 0, 0.493);
+    color: white;
+    
+}
+
+div.ui.input>input {
+    /* border: 1px solid rgba(255, 136, 0, 0.493) ; */
+}
