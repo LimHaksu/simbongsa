@@ -4,7 +4,7 @@ import * as postingAction from "redux/modules/posting";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import InfiniteScroll from "react-infinite-scroll-component";
-import PostCard from 'components/posting/PostCard';
+// import PostCard from 'components/posting/PostCard';
 interface Props {
   userId: string;
   PostingAction: any;
@@ -27,7 +27,7 @@ class MyPost extends Component<Props, State> {
     this.setState({ pageNum: pageNum + 1 });
   }
 
-  async componentWillUnmount(){
+  async componentWillUnmount() {
     const { PostingAction } = this.props;
     await PostingAction.resetPostByUser();
   }
@@ -39,33 +39,34 @@ class MyPost extends Component<Props, State> {
     this.setState({ pageNum: pageNum + 1 });
   }
 
-  setFlag = (flag : boolean) =>{
-    this.setState({ flag : flag });
+  setFlag = (flag: boolean) => {
+    this.setState({ flag: flag });
   }
 
   async componentDidUpdate() {
     if (this.state.flag) {
       this.setState({
         pageNum: 1,
-        flag: false},
-        async ()=>{
+        flag: false
+      },
+        async () => {
           const { PostingAction, userId } = this.props;
           const { pageNum } = this.state;
           await PostingAction.resetPostByUser();
           await PostingAction.getPostByUser(userId, pageNum);
           this.setState({ pageNum: pageNum + 1 });
-      })
+        })
     }
   }
 
   render() {
     const { postList } = this.props;
     const PrintArray = postList.map((post: any, i: any) => {
-      return <PostCard color="white" post={post} key={i} setFlag={this.setFlag} />
+      // return <PostCard color="white" post={post} key={i} setFlag={this.setFlag} />
     });
     return (
       <InfiniteScroll
-        style={{ overflow: "none"}}
+        style={{ overflow: "none" }}
         dataLength={postList.length}
         next={this.loadMoreData.bind(this)}
         hasMore={postList.length >= this.state.pageNum * 10}

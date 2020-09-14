@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Container, Responsive, Image, Grid, Menu, Icon, Button, Dropdown } from "semantic-ui-react";
+import { Container, Responsive, Image, Menu, Icon, Dropdown } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import storage from "lib/storage";
 import * as authActions from 'redux/modules/auth';
 import './Header.css'
@@ -25,7 +25,7 @@ class HeaderForMobile extends React.Component<
 
   state = { activeItem: "" };
   handleLogout = async () => {
-    const { AuthActions, history } = this.props;
+    const { AuthActions } = this.props;
     storage.remove("token");
     AuthActions.loginCheck(false);
     window.location.href = `${process.env.REACT_APP_FRONT_URI}`;
@@ -37,11 +37,11 @@ class HeaderForMobile extends React.Component<
     )[1];
     return (
       <Responsive minWidth={Responsive.onlyMobile.minWidth} maxWidth={1000}>
-        <Container style={{ marginTop: "10px"}}>
+        <Container style={{ marginTop: "10px" }}>
           <div className="header">
             <Menu
               borderless widths={3} fixed="top" icon
-              style={{width: "100vw" }}
+              style={{ width: "100vw" }}
             >
               <Menu.Item name="HOME" className="goHome">
                 <Link to="/"><Image src="/images/logo2.png" style={{ width: "6rem", padding: "0.3rem", marginLeft: "0.2rem" }} /></Link>
@@ -67,9 +67,9 @@ class HeaderForMobile extends React.Component<
                           </Link>
                       </Dropdown.Item>
                     ) : (
-                        <div>                 
+                        <div>
                           <Dropdown.Item onClick={this.handleLogout}>
-                          로그아웃
+                            로그아웃
                         </Dropdown.Item>
                           <Dropdown.Divider />
                           <Dropdown.Item>
@@ -86,8 +86,8 @@ class HeaderForMobile extends React.Component<
               </Menu.Item>
             </Menu>
           </div>
-      </Container>
-        </Responsive>
+        </Container>
+      </Responsive>
     );
   }
 }

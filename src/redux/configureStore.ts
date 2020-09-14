@@ -17,7 +17,6 @@ const configureStore = () => {
     modules,
     composeEnhancers(applyMiddleware(penderMiddleware()))
   );
-  // console.log("?!:", store);
   return store;
 };
 const store = configureStore();

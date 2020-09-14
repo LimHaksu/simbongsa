@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as userActions from "redux/modules/user";
-import * as UserAPI from "lib/api/UserApi";
 
 import ActionButton from "components/button/ActionButton";
-
-// import "assets/mycss";
 
 interface Props {
   UserActions: any;

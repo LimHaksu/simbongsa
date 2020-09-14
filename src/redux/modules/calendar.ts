@@ -1,8 +1,6 @@
 import { createAction, handleActions } from "redux-actions";
 import moment, { Moment as MomentTypes } from "moment";
 import produce from "immer";
-import { act } from "react-dom/test-utils";
-import { List } from "immutable";
 const DATE_CHANGE = "calendar/DATE_CHANGE";
 const TOGGLE_CHANGE = "calendar/TOGGLE_CHANGE";
 

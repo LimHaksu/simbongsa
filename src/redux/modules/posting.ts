@@ -1,5 +1,5 @@
 import { createAction, handleActions } from "redux-actions";
-import { Map, List, fromJS } from "immutable";
+import { Map, List } from "immutable";
 import { pender } from "redux-pender/lib/utils";
 import * as PostingApi from "lib/api/PostingApi";
 const INITIALIZE_FORM = "posting/INITIALIZE_FORM";
@@ -8,7 +8,6 @@ const CHANGE_FILE_INPUT = "posting/CHANGE_FILE_INPUT";
 const CHANGE_STATUS = "posting/CHANGE_STATUS";
 const POST_POSTING = "posting/POST_POSTING";
 const GET_POSTING = "posting/GET_POSTING";
-const POST_REVIEW = "posting/POST_REVIEW";
 const GET_POSTING_BY_USER = "posting/GET_POSTING_BY_USER";
 const RESET_POST_BY_USER = "posting/RESET_POST_BY_USER"
 export const changeInput = createAction(CHANGE_INPUT);
@@ -37,15 +36,6 @@ export interface PostingState {
   selectedfiles: List<any>;
   posts: object;
   postsByUser: List<any>;
-  // posts: {
-  //     uris: List<any>,
-  //     post: {
-  //         v_id: number;
-  //         p_content: string;
-  //         m_id: number;
-  //         p_status: number;
-  //     }
-  // };
 }
 
 const initialState = Map({

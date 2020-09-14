@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
 import { Button } from 'semantic-ui-react';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-import moment, { Moment as MomentTypes } from "moment";
+import moment, { Moment as MomentTypes } from 'moment';
 import './Calendar.scss';
-
 
 interface Props {
     dayVolList: Function
@@ -38,7 +37,7 @@ function Body(props: Props) {
         const endWeek = props.date.clone().endOf('month').week() === 1 ? 53 : props.date.clone().endOf('month').week();
         let calendar = [] as any;
         let idx = 0;
-        for (let week = startWeek; week <= endWeek; week++ , idx++) {
+        for (let week = startWeek; week <= endWeek; week++, idx++) {
             calendar.push(
                 <div className="row" key={week} id={'id' + idx.toString()}>
                     {

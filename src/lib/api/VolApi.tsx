@@ -3,15 +3,6 @@ import storage from "lib/storage";
 
 const restBaseApi = process.env.REACT_APP_REST_BASE_API!;
 
-// let headers = {
-//   // "Access-Contorl-Allow-Origin": "*",
-//   // "Access-Contorl-Allow-Method": "*",
-//   // "Access-Contorl-Allow-Headers": "*",
-//   // "Access-Contorl-Allow-Credencial": true,
-//   Authorization: ""
-// };
-
-
 export const getVolListBySearch = ({ input, firstLocation, secondLocation, thirdLocation, firstCategory, secondCategory, thirdCategory, bgnTm, endTm, age }: any) => {
   try {
     const token = "Bearer " + storage.get("token");
@@ -194,13 +185,13 @@ export const getVolListByUserId = (userId: string): any => {
   }
 };
 
-export const getVolFeed = (v_id : string, pageNum : number) : any => {
-  try{
+export const getVolFeed = (v_id: string, pageNum: number): any => {
+  try {
     const token = "Bearer " + storage.get('token');
-    return axios.get(`${restBaseApi}/rest/VolFeed/${v_id}/10/${pageNum}`,{
-      headers : { Authorization : token }
+    return axios.get(`${restBaseApi}/rest/VolFeed/${v_id}/10/${pageNum}`, {
+      headers: { Authorization: token }
     });
-  }catch(error){
+  } catch (error) {
     return error;
   }
 

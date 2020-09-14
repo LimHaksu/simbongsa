@@ -1,4 +1,4 @@
-import AppBar from "@material-ui/core/AppBar";
+import AppBar from '@material-ui/core/AppBar';
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
@@ -58,10 +58,10 @@ class TemporaryDrawer extends React.Component<Iprops, Istate> {
                 {index % 2 === 0 ? (
                   <EmojiPeopleRoundedIcon />
                 ) : (
-                  <NaviLink to={"/setting"}>
-                    <SettingsRoundedIcon />
-                  </NaviLink>
-                )}
+                    <NaviLink to={"/setting"}>
+                      <SettingsRoundedIcon />
+                    </NaviLink>
+                  )}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>

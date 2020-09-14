@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import LinkButton from "components/button/LinkButton";
 import UserSettingTab from "containers/usersetting/UserSettingTab";
-import { Container, Menu } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 interface Props {
   history: any;
 }
@@ -19,6 +18,6 @@ export default class UserSettingPage extends Component<Props, State> {
 
   render() {
     const { image, activeItem } = this.state;
-    return <Container style={{width:"600px"}}><UserSettingTab /></Container>;
+    return <Container style={{ width: "600px" }}><UserSettingTab /></Container>;
   }
 }

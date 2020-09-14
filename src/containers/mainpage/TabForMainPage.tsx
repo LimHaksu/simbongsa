@@ -3,18 +3,17 @@ import { Tab, Container, Responsive } from "semantic-ui-react";
 import CalendarContainer from "containers/calendar/CalendarContainer";
 import Location from "containers/location/Location";
 import VolListPage from "containers/vollistpage/VolListPage";
-import { list } from "react-immutable-proptypes";
 import VolInfo from "components/map/VolInfo";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as pageActions from "redux/modules/page";
 
 interface Props {
-  PageActions : any;
-  currentTab : any; //pageActions.VolTab;
+  PageActions: any;
+  currentTab: any; //pageActions.VolTab;
 }
 interface State {
-  
+
 }
 
 
@@ -27,7 +26,7 @@ const panes = [
     },
     render: () => (
       <Tab.Pane >
-          <VolListPage />
+        <VolListPage />
       </Tab.Pane>
     )
   },
@@ -35,8 +34,8 @@ const panes = [
     menuItem: { key: "map", content: "지도", icon: "map outline" },
     render: () => (
       <Tab.Pane>
-          <Location />
-          <VolInfo />
+        <Location />
+        <VolInfo />
       </Tab.Pane>
     )
   },
@@ -57,44 +56,44 @@ const panes = [
 ];
 
 class TabForMainPage extends Component<Props, State> {
-  state = { activeIndex : 0 }
-  componentDidMount(){
-    const{ currentTab } = this.props;
-    this.setState({activeIndex : currentTab}) // store에 저장해 둔 탭을 불러옴
+  state = { activeIndex: 0 }
+  componentDidMount() {
+    const { currentTab } = this.props;
+    this.setState({ activeIndex: currentTab }) // store에 저장해 둔 탭을 불러옴
   }
-  handleTabChange = (e :any , { activeIndex } : any) => {
+  handleTabChange = (e: any, { activeIndex }: any) => {
     const { PageActions } = this.props;
     PageActions.setCurrentTab(activeIndex); // 클릭한 탭을 store에 저장해 둠
-    this.setState({activeIndex}); // 클릭한 탭으로 바꿔줌
+    this.setState({ activeIndex }); // 클릭한 탭으로 바꿔줌
   }
   render() {
     const { activeIndex } = this.state;
     return (
-        <div id="tab">
-          {/* 데스크탑용 */}
-          <Responsive minWidth={1001}>
-            <Container style={{width:"740px"}}>
+      <div id="tab">
+        {/* 데스크탑용 */}
+        <Responsive minWidth={1001}>
+          <Container style={{ width: "740px" }}>
             <Tab
               panes={panes}
               activeIndex={activeIndex}
-              onTabChange={this.handleTabChange}/>
-            </Container>
-          </Responsive>
-          {/* 모바일 용 */}
-          <Responsive minWidth={Responsive.onlyMobile.minWidth} maxWidth={1000}>
+              onTabChange={this.handleTabChange} />
+          </Container>
+        </Responsive>
+        {/* 모바일 용 */}
+        <Responsive minWidth={Responsive.onlyMobile.minWidth} maxWidth={1000}>
           <Tab
-              panes={panes}
-              activeIndex={activeIndex}
-              onTabChange={this.handleTabChange}/>
-          </Responsive>
-         </div>
+            panes={panes}
+            activeIndex={activeIndex}
+            onTabChange={this.handleTabChange} />
+        </Responsive>
+      </div>
     )
   }
 }
 export default connect(
   ({ page }: any) => {
     return {
-      currentTab : page.get("currentTab")
+      currentTab: page.get("currentTab")
     };
   },
   dispatch => ({

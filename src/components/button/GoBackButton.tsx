@@ -1,5 +1,5 @@
 import React from "react";
-import { RouteComponentProps, withRouter } from "react-router-dom";
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { Button } from "semantic-ui-react";
 
 interface IProps extends RouteComponentProps {

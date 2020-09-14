@@ -1,12 +1,11 @@
-import { createAction, handleActions } from "redux-actions";
-import { pender } from "redux-pender";
+import { createAction, handleActions } from 'redux-actions';
+import { pender } from 'redux-pender';
 import * as AuthAPI from "lib/api/AuthApi";
-import { Record, Map } from "immutable";
+import { Map } from "immutable";
 
 // input, form 관련
 const CHANGE_INPUT = "auth/CHANGE_INPUT"; // input 값 변경
 const INITIALIZE_FORM = "auth/INITIALIZE_FORM"; // form 초기화
-const CHECK_FORM = "auth/CHECK_FORM"; // 폼이 제대로 되었는지 체크한다.
 // 중복 환인 관련
 const CHECK_EMAIL_EXISTS = "auth/CHECK_EMAIL_EXISTS"; // 이메일 중복 확인
 const CHECK_USERNAME_EXISTS = "auth/CHECK_USERNAME_EXISTS"; // 아이디 중복 확인
@@ -14,7 +13,6 @@ const CHECK_USERNAME_EXISTS = "auth/CHECK_USERNAME_EXISTS"; // 아이디 중복 
 const CHECK_STATUS = "auth/CHECK_STATUS"; // 현재 로그인상태 확인
 const LOCAL_REGISTER = "auth/LOCAL_REGISTER"; // 이메일 가입
 const LOCAL_LOGIN = "auth/LOCAL_LOGIN"; // 이메일 로그인
-const LOCAL_LOGIN_BY_ID = "auth/LOCAL_LOGIN_BY_ID"; // ID 로그인
 const LOGOUT = "auth/LOGOUT"; // 로그아웃
 const GOOGLE_LOGIN = "auth/GOOGLE_LOGIN";
 const LOGIN_CHECK = "auth/LOGIN_CHECK";
@@ -117,7 +115,7 @@ const initialState = Map({
       password: ""
     }),
     error: Map({
-      auth : "",
+      auth: "",
       email: "",
       password: ""
     })
@@ -143,7 +141,7 @@ export default handleActions<any>(
     [LOGIN_CHECK]: (state, action) => {
       return state.set("loginCheck", action.payload);
     },
-    [SET_FIND_PASSWORD_EMAIL] : (state, action)=>{
+    [SET_FIND_PASSWORD_EMAIL]: (state, action) => {
       return state.set('findPassWordEmail', action.payload);
     },
     ...pender({

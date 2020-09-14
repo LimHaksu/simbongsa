@@ -1,12 +1,12 @@
 import { createAction, handleActions } from "redux-actions";
-import { Map, List } from "immutable";
+import { Map } from "immutable";
 
-enum VolTab{
+enum VolTab {
     List,
     Map,
     Calendar
 }
-enum UserPageTab{
+enum UserPageTab {
     Volunteer,
     Post,
     Statistics
@@ -18,23 +18,23 @@ export const setCurrentTab = createAction(SET_CURRENT_TAB);
 export const setCurrentMapInfo = createAction(SET_CURRENT_MAP_INFO);
 export const setVolListForMap = createAction(SET_VOL_LIST_FOR_MAP);
 const initialState = Map({
-    currentTab : 0,
-    currentMapInfo : Map({
-        location : Map({y : 0, x : 0}),
-        level : 14,
+    currentTab: 0,
+    currentMapInfo: Map({
+        location: Map({ y: 0, x: 0 }),
+        level: 14,
     }),
 });
 
 export default handleActions<any>(
-  {
-    [SET_CURRENT_TAB] : (state, action) =>{
-        return state.set("currentTab", action.payload);
+    {
+        [SET_CURRENT_TAB]: (state, action) => {
+            return state.set("currentTab", action.payload);
+        },
+        [SET_CURRENT_MAP_INFO]: (state, action) => {
+            const { y, x, level } = action.payload;
+            const data = { location: { y: y, x: x }, level: level };
+            return state.set("currentMapInfo", Map(data));
+        },
     },
-    [SET_CURRENT_MAP_INFO] : (state, action) =>{
-        const { y, x, level } = action.payload;
-        const data = { location : { y : y, x : x}, level : level};
-        return state.set("currentMapInfo", Map(data));
-    },
-  },
-  initialState
+    initialState
 );

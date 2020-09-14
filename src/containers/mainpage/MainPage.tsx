@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import TabForMainPage from "containers/mainpage/TabForMainPage";
 import SearchBar from "components/search/SearchBar";
-import SearchContainer from "containers/usersetting/SearchContainer";
 import ModalForm from "./ModalForm";
 import "./MainPage.css";
 
@@ -61,7 +60,7 @@ class MainPage extends Component<Iprops> {
 
     return (
       //@ts-ignore
-      <div id='tab' style={{width:"100vw"}}>
+      <div id='tab' style={{ width: "100vw" }}>
         <Container text >
           <SearchBar />
           <div

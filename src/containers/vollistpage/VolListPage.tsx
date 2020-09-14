@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { List } from "immutable";
 import VolList from "components/vol/VolList";
 import { connect } from "react-redux";
-// import * as volActions from "redux/modules/volunteer";
 import * as volActions from "redux/modules/vol";
 import * as searchActions from "redux/modules/search";
 import * as userActions from "redux/modules/user";
@@ -17,7 +16,7 @@ interface Props {
   categorys: any;
   times: any;
 }
-interface State {}
+interface State { }
 
 class VolListPage extends Component<Props, State> {
   state = {

@@ -1,13 +1,10 @@
 import React from "react";
-import PV from "password-validator";
 import {
   Grid,
   Image,
-  Header,
   Form,
   Segment,
   Button,
-  Message,
   Container
 } from "semantic-ui-react";
 import locationAllList from "lib/json/temp.json";
@@ -18,15 +15,7 @@ import "./Login.css";
 // import GoogleLogin from "components/user/snsLogin/Google";
 import GoogleLogin from "react-google-login";
 
-import ReactCountUp from "react-countup";
-import ScrollAnimation from "react-animate-on-scroll";
-//@ts-ignore
-import ReactPageScroller from "react-page-scroller"; // @types/react-page-scroller 가 없어서 위에 // @ts-ignore 를 추가
-
 // 직접 제작한 Components
-import LinkButton from "components/button/LinkButton";
-import ActionButton from "components/button/ActionButton";
-import Input from "components/input/Input";
 import AuthError from "components/error/AuthError";
 // local storage에 저장하는 component
 
@@ -43,7 +32,7 @@ import validator from "validator";
 import { Link } from "react-router-dom";
 
 // jwt
-import jwt from "jsonwebtoken";
+import jwt from 'jsonwebtoken';
 
 interface validate {
   [name: string]: (value: string) => boolean;
@@ -151,10 +140,10 @@ class Login extends React.Component<any, any> {
     // 로그인을 시도
     try {
       // id 로그인인경우
-      if(error.email){
+      if (error.email) {
         await AuthActions.localLoginById({ email, password });
-      }else{
-      // email 로그인인경우
+      } else {
+        // email 로그인인경우
         await AuthActions.localLogin({ email, password });
       }
       if (this.props.result === "EmailAuthenticateNeed") {
@@ -227,43 +216,43 @@ class Login extends React.Component<any, any> {
       const info = preferInfo.toJS();
 
       // 시간 관련
-      if(info.bgnTm === null){
+      if (info.bgnTm === null) {
         SearchActions.initialInsert({
           form: "times",
           key: "bgnTm",
           value: "00:00:00"
         });
       }
-      else{
+      else {
         SearchActions.initialInsert({
           form: "times",
           key: "bgnTm",
           value: info.bgnTm
         });
       }
-      if(info.endTm === null){
+      if (info.endTm === null) {
         SearchActions.initialInsert({
           form: "times",
           key: "endTm",
-          value: "24:00:00" 
-        });
-    }
-    else{
-      if(info.endTm === "23:59:59"){
-        SearchActions.initialInsert({
-          form: "times",
-          key: "endTm",
-          value: "24:00:00" 
+          value: "24:00:00"
         });
       }
-      else{
-      SearchActions.initialInsert({
-        form: "times",
-        key: "endTm",
-        value: info.endTm 
-      });
+      else {
+        if (info.endTm === "23:59:59") {
+          SearchActions.initialInsert({
+            form: "times",
+            key: "endTm",
+            value: "24:00:00"
+          });
+        }
+        else {
+          SearchActions.initialInsert({
+            form: "times",
+            key: "endTm",
+            value: info.endTm
+          });
+        }
       }
-    }
       // 나이 관련
       const today = new Date();
       const year = today.getFullYear();

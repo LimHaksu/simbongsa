@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // 직접 제작한 Component
 import Map from "components/map/Map";
-import VolInfo from "components/map/VolInfo";
 
 // redux 관련
 import { connect } from "react-redux";
@@ -19,7 +18,7 @@ interface State {
 class Location extends Component<Props, State> {
   // state = { width: window.innerWidth, height: window.innerHeight - 345 };
   // componentDidMount() {
-    // window.addEventListener("resize", this.updateDimensions);
+  // window.addEventListener("resize", this.updateDimensions);
   // }
   // updateDimensions = () => {
   //   this.setState({

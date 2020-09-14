@@ -1,7 +1,7 @@
 import React from "react";
 import Vol from "components/vol/Vol";
 import InfiniteScroll from "react-infinite-scroll-component";
-// import "./VolList.css"
+
 interface Props {
   volunteers: any[];
   width?: number;
@@ -29,7 +29,6 @@ export default class VolList extends React.Component<Props, State> {
     return (
       <InfiniteScroll
         dataLength={volunteers.length}
-        // height={height}
         next={loadMoreData}
         hasMore={volunteers.length >= this.state.pageNum * 10}
         loader={<p>봉사활동 목록을 불러오는중</p>}

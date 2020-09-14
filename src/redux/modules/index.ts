@@ -6,7 +6,6 @@ import posting from "./posting"
 import search from './search'
 import base from './base'
 import page from './page';
-// import temp from "./temp";
 
 import calendar from "./calendar";
 import { penderReducer } from "redux-pender";

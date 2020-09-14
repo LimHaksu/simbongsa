@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as AuthApi from "lib/api/AuthApi";
 import Input from "components/input/Input";
 import AuthError from "components/error/AuthError";
-import validator from "validator";
+import validator from 'validator';
 import ActionButton from "components/button/ActionButton";
 import { Container, Dimmer, Loader, Form, Segment, Button } from "semantic-ui-react";
 
@@ -102,7 +102,7 @@ export default class FindPasswordMailRecieve extends Component<Props, State> {
           type="password"
           nametag="비밀번호 확인"
         />
-        <br/>
+        <br />
         <ActionButton action={clickConfirmButton} placeholder="비밀번호 변경" />
       </Container>
     );

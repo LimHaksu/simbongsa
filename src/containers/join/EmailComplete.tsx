@@ -1,36 +1,33 @@
 import React, { Component } from "react";
 
 // redux 관련
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import * as userActions from "redux/modules/user";
 import * as AuthApi from "lib/api/AuthApi";
-import {Container} from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 interface Props {
   match: any;
-  history : any;
+  history: any;
 }
-interface State { 
+interface State {
   emailValidate: boolean;
 }
 
 // http://13.124.127.232:8080/A205/email/enter?m_email=pjh5929@naver.com&m_key=m7OSjPN0jpGOTlTCM0QR
 class EmailComplete extends Component<Props, State> {
-  state = {emailValidate : false};
+  state = { emailValidate: false };
 
   componentDidMount() {
     const { email, key } = this.props.match.params;
     const { history } = this.props;
     let returnedAxios = AuthApi.emailValidate(email, key);
-    returnedAxios.then((res:any)=>{
+    returnedAxios.then((res: any) => {
       let emailValidate = res.data.data;
-      this.setState({emailValidate : emailValidate})
-      if(emailValidate){
-        window.setTimeout(()=>{
+      this.setState({ emailValidate: emailValidate })
+      if (emailValidate) {
+        window.setTimeout(() => {
           history.push("/login");
-        },5000)
+        }, 5000)
       }
-    }).catch((error:any)=>{
+    }).catch((error: any) => {
       console.log(error);
     })
   }

@@ -3,7 +3,6 @@ import { createAction, handleActions } from "redux-actions";
 import { Map, List } from "immutable";
 import * as UserAPI from "lib/api/UserApi";
 import { pender } from "redux-pender";
-import * as userActions from "redux/modules/user";
 
 const SET_LOGGED_INFO = "user/SET_LOGGED_INFO"; // 로그인 정보 설정
 const SET_VALIDATED = "user/SET_VALIDATED"; // validated 값 설정
@@ -19,7 +18,6 @@ const FOLLOW_USER = 'user/FOLLOW_USER';
 const UNFOLLOW_USER = 'user/UNFOLLOW_USER';
 const SET_USER_PROFILE_IMAGE = 'user/SET_USER_PROFILE_IMAGE';
 const SET_OTHERS_ID = 'user/SET_OTHERS_ID';
-// const SET_USER_ID = "user/SET_USER_ID";
 
 export const setLoggedInfo = createAction(SET_LOGGED_INFO); // loggedInfo
 export const setValidated = createAction(SET_VALIDATED); // validated
@@ -39,12 +37,12 @@ export const getNormalFeedList = createAction(
 );
 export const resetFeedList = createAction(RESET_FEED_LIST);
 
-export const setUserFollowingList = createAction(SET_USER_FOLLOWING_LIST, UserAPI.getUserFollowing, profileUserId=>profileUserId); // 3번째 파라미터는 onSucess 부분에서 action.meta 입니다. 두번째 파라미터(action.payload)와 같은 인풋을 받습니다.
-export const setUserFollowerList = createAction(SET_USER_FOLLOWER_LIST, UserAPI.getUserFollower, (profileUserId)=>{return profileUserId});
-export const setUserFollowTag = createAction(SET_USER_FOLLOW_TAG, UserAPI.checkFollow, (loginUserId,profileUserId)=>{return profileUserId}); // 세번째 파라미터의 인풋 loginUserId는 사용하지 않지만 인풋이 두개임을 나타내기 위하여 필요함.
-export const followUser = createAction(FOLLOW_USER, UserAPI.followUser, (loginUserId,profileUserId)=>{return profileUserId});
-export const unfollowUser = createAction(UNFOLLOW_USER, UserAPI.unfollowUser, (loginUserId,profileUserId)=>{return profileUserId});
-export const setUserProfileImage = createAction(SET_USER_PROFILE_IMAGE, UserAPI.getUserInfo, profileUserId=>profileUserId);
+export const setUserFollowingList = createAction(SET_USER_FOLLOWING_LIST, UserAPI.getUserFollowing, profileUserId => profileUserId); // 3번째 파라미터는 onSucess 부분에서 action.meta 입니다. 두번째 파라미터(action.payload)와 같은 인풋을 받습니다.
+export const setUserFollowerList = createAction(SET_USER_FOLLOWER_LIST, UserAPI.getUserFollower, (profileUserId) => { return profileUserId });
+export const setUserFollowTag = createAction(SET_USER_FOLLOW_TAG, UserAPI.checkFollow, (loginUserId, profileUserId) => { return profileUserId }); // 세번째 파라미터의 인풋 loginUserId는 사용하지 않지만 인풋이 두개임을 나타내기 위하여 필요함.
+export const followUser = createAction(FOLLOW_USER, UserAPI.followUser, (loginUserId, profileUserId) => { return profileUserId });
+export const unfollowUser = createAction(UNFOLLOW_USER, UserAPI.unfollowUser, (loginUserId, profileUserId) => { return profileUserId });
+export const setUserProfileImage = createAction(SET_USER_PROFILE_IMAGE, UserAPI.getUserInfo, profileUserId => profileUserId);
 export const setOthersID = createAction(SET_OTHERS_ID);
 // export const setUserId = createAction(SET_USER_ID);
 
@@ -91,7 +89,7 @@ const initialState = Map({
     //          profileImage : string;
   }),
 
-  othersId : "" // 다른 사람 프로필을 조회하기 위한 아이디
+  othersId: "" // 다른 사람 프로필을 조회하기 위한 아이디
 });
 
 export default handleActions<any>(
@@ -108,7 +106,7 @@ export default handleActions<any>(
     [CHANGE_LOADING]: (state, action) => {
       return state.set("loading", action.payload);
     },
-    [RESET_FEED_LIST] : (state) =>{
+    [RESET_FEED_LIST]: (state) => {
       return state.set("preferFeedList", List([])).set("normalFeedList", List([]));
     },
     ...pender({
@@ -147,55 +145,55 @@ export default handleActions<any>(
     }),
 
     ...pender({
-        type : SET_USER_FOLLOWING_LIST,
-        onSuccess : (state, action) =>{
-          const { data } = action.payload.data;
-          const profileUserId = action.meta;       
-          return state.setIn(["userProfileMap", profileUserId, "followingList"],data.map((item : any)=>item.m_userid));
-        }
+      type: SET_USER_FOLLOWING_LIST,
+      onSuccess: (state, action) => {
+        const { data } = action.payload.data;
+        const profileUserId = action.meta;
+        return state.setIn(["userProfileMap", profileUserId, "followingList"], data.map((item: any) => item.m_userid));
+      }
     }),
     ...pender({
-        type : SET_USER_FOLLOWER_LIST,
-        onSuccess : (state, action) =>{
-          const { data } = action.payload.data;
-          const profileUserId = action.meta;          
-          return state.setIn(["userProfileMap", profileUserId, "followerList"], data.map((item : any)=>item.m_userid));
-        }
+      type: SET_USER_FOLLOWER_LIST,
+      onSuccess: (state, action) => {
+        const { data } = action.payload.data;
+        const profileUserId = action.meta;
+        return state.setIn(["userProfileMap", profileUserId, "followerList"], data.map((item: any) => item.m_userid));
+      }
     }),
     ...pender({
-        type : SET_USER_FOLLOW_TAG,
-        onSuccess : (state, action) =>{
-          const { data } = action.payload.data;
-          const profileUserId = action.meta; 
-          return state.setIn(["userProfileMap", profileUserId, "isProfileUserFollowedByLoginUser"], data);
-        }
+      type: SET_USER_FOLLOW_TAG,
+      onSuccess: (state, action) => {
+        const { data } = action.payload.data;
+        const profileUserId = action.meta;
+        return state.setIn(["userProfileMap", profileUserId, "isProfileUserFollowedByLoginUser"], data);
+      }
     }),
     ...pender({
-      type : FOLLOW_USER,
-      onSuccess : (state, action)=>{
+      type: FOLLOW_USER,
+      onSuccess: (state, action) => {
         // const { }
-        const profileUserId = action.meta; 
+        const profileUserId = action.meta;
         return state.setIn(["userProfileMap", profileUserId, "isProfileUserFollowedByLoginUser"], true);
       }
     }),
     ...pender({
-      type : UNFOLLOW_USER,
-      onSuccess : (state, action)=>{
+      type: UNFOLLOW_USER,
+      onSuccess: (state, action) => {
         // const { }
-        const profileUserId = action.meta; 
+        const profileUserId = action.meta;
         return state.setIn(["userProfileMap", profileUserId, "isProfileUserFollowedByLoginUser"], false);
       }
     }),
     ...pender({
-      type : SET_USER_PROFILE_IMAGE,
-      onSuccess : (state, action)=>{
+      type: SET_USER_PROFILE_IMAGE,
+      onSuccess: (state, action) => {
         const { profile } = action.payload.data.data;
         const profileUserId = action.meta;
         return state.setIn(["userProfileMap", profileUserId, "profileImage"], `${process.env.REACT_APP_REST_BASE_API}/uploads/${profile}`);
       }
     }),
 
-    [SET_OTHERS_ID] : (state, action)=>{
+    [SET_OTHERS_ID]: (state, action) => {
       return state.set("othersId", action.payload);
     }
     // [SET_USER_ID]: (state, action) =>

@@ -3,7 +3,6 @@ import { Label, Icon } from 'semantic-ui-react';
 import "./CertLabel.css";
 
 interface IProps {
-  // v_Auth: number;
   v_pStatus: number;
   v_mBgnD: string;
   v_mEndD: string;
@@ -21,8 +20,8 @@ export default class CertLabel extends Component<IProps & any, any> {
 
   printFunc(): void {
     var fullDate = this.dateFunc();
-    var mBgnD= this.props.volunteer.v_mBgnD.replace(/-/g,'');
-    var mEndD= this.props.volunteer.v_mEndD.replace(/-/g,'');
+    var mBgnD = this.props.volunteer.v_mBgnD.replace(/-/g, '');
+    var mEndD = this.props.volunteer.v_mEndD.replace(/-/g, '');
 
     if (this.props.volunteer.v_Auth > 0) {
       this.setState({ isCert: "시간인증" });
@@ -38,12 +37,13 @@ export default class CertLabel extends Component<IProps & any, any> {
       if (mBgnD > fullDate) {
         this.setState({ isFull: "모집대기" });
         this.setState({ isFullClass: "w-full" });
-      } else if (mEndD < fullDate){
+      } else if (mEndD < fullDate) {
         this.setState({ isFull: "모집완료" });
         this.setState({ isFullClass: "full" });
       } else {
         this.setState({ isFull: "모집중" });
-        this.setState({ isFullClass: "n-full" })};
+        this.setState({ isFullClass: "n-full" })
+      };
     } else if (this.props.volunteer.v_pStatus === '1') {
       this.setState({ isFull: "모집대기" });
       this.setState({ isFullClass: "w-full" });
@@ -57,7 +57,7 @@ export default class CertLabel extends Component<IProps & any, any> {
     month = month >= 10 ? month : '0' + month;
     var day: string | number = date.getDate();
     day = day >= 10 ? day : '0' + day;
-    return  year + '' + month + '' + day;
+    return year + '' + month + '' + day;
   }
 
   componentDidMount() {
@@ -68,7 +68,7 @@ export default class CertLabel extends Component<IProps & any, any> {
     if (prevProps.volunteer !== this.props.volunteer) {
       this.printFunc();
     }
-}
+  }
   render() {
     return (
       <div style={{ display: "inline" }}>

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import "assets/mycss";
 import iconSrc from "assets/images/location_marker.png";
 import './map.scss';
 //직접 만든 컴포넌트
@@ -19,9 +18,9 @@ interface State {
 
 class VolInfo extends Component<Props, State> {
   state = { volunteers: [] as any, volunteersForList: [] as any };
-  componentDidMount(){
+  componentDidMount() {
     const { volunteersForMap } = this.props;
-    if(volunteersForMap.size > 0){
+    if (volunteersForMap.size > 0) {
       let volunteers = volunteersForMap.toJS();
       let volunteersForList: any[] = [];
       let idx = 0;
@@ -101,7 +100,7 @@ class VolInfo extends Component<Props, State> {
               숫자<span> </span>
               <span className="circle">1365</span>
             </b>
-            를 눌러<br/> 자세한 정보를 알아보세요.
+            를 눌러<br /> 자세한 정보를 알아보세요.
           </div>
         )}
         {/* {selectedVolunteer.v_id && (

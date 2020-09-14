@@ -1,5 +1,4 @@
 import React, { ReactElement } from "react";
-// import "assets/mycss";
 import { Form } from "semantic-ui-react";
 interface Props {
   value: string;

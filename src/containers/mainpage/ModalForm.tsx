@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-import { Button, Header, Image, Modal } from 'semantic-ui-react'
+import { Button, Modal } from 'semantic-ui-react'
 import SearchContainer from 'containers/usersetting/SearchContainer'
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as authActions from "redux/modules/auth";
 import * as userActions from "redux/modules/user";
-import * as baseActions from "redux/modules/base";
 import * as volActions from "redux/modules/vol";
 import * as searchActions from "redux/modules/search";
 import './ModalForm.scss'
@@ -72,17 +70,17 @@ class ModalExampleDimmer extends Component<any, IState> {
         if (ages.toJS().adult === true) {
             age = "1992-01-01";
         } else if (ages.toJS().youth === true) {
-        age = "2005-01-01";
+            age = "2005-01-01";
         }
-        
+
         UserActions.changeLoading(true)
         try {
             VolActions.getVolList({ input: input, firstLocation: firstLocation, secondLocation: secondLocation, thirdLocation: thirdLocation, firstCategory: firstCategory, secondCategory: secondCategory, thirdCategory: thirdCategory, bgnTm: bgnTm, endTm: endTm, age: age })
-            VolActions.getInitailList({ input: input, firstLocation: firstLocation, secondLocation: secondLocation, thirdLocation: thirdLocation, firstCategory: firstCategory, secondCategory: secondCategory, thirdCategory: thirdCategory, bgnTm: bgnTm, endTm: endTm, pageNum: 1, age:age })
-        } catch{
+            VolActions.getInitailList({ input: input, firstLocation: firstLocation, secondLocation: secondLocation, thirdLocation: thirdLocation, firstCategory: firstCategory, secondCategory: secondCategory, thirdCategory: thirdCategory, bgnTm: bgnTm, endTm: endTm, pageNum: 1, age: age })
+        } catch {
         } finally {
             UserActions.changeLoading(false)
-            SearchActions.lastInput(input+" 선호정보 기반")
+            SearchActions.lastInput(input + " 선호정보 기반")
         }
 
     }

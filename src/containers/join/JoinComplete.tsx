@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // redux 관련
-import { Map } from 'immutable';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as authActions from "redux/modules/auth";

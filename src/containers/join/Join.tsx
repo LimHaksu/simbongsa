@@ -1,5 +1,4 @@
 import React from "react";
-// import "assets/mycss";
 import validator from "validator";
 import '../login/Login.css'
 //storage = 데이터를 조금 더 편하게 넣고 조회하기 위한 헬퍼 모듈
@@ -16,14 +15,14 @@ import AuthError from "components/error/AuthError";
 import { Button, Grid, Image, Form, Segment, Container, Dimmer, Loader } from 'semantic-ui-react'
 
 //debouce 특정 함수가 반복적으로 일어나면, 바로 실행하지 않고, 주어진 시간만큼 쉬어줘야 함수가 실행된다.
-import debounce from "lodash/debounce";
+import { debounce } from 'lodash'
 
 interface validate {
   [name: string]: (value: string) => boolean;
 }
 
 class Join extends React.Component<any, any> {
-  state = { isMailSending : false}
+  state = { isMailSending: false }
   componentWillUnmount() {
     const { AuthActions } = this.props;
     AuthActions.initializeForm("join");
@@ -147,10 +146,10 @@ class Join extends React.Component<any, any> {
         userid,
         password
       });
-      this.setState({isMailSending : true }, async ()=>{
+      this.setState({ isMailSending: true }, async () => {
         await AuthApi.sendSignupEmail(email);
         UserActions.setValidated(true);
-        this.setState({isMailSending : false},)
+        this.setState({ isMailSending: false },)
         history.push("/join/complete"); // 회원가입 성공시 홈페이지로 이동
       })
       // const loggedInfo = this.props.result.toJS();

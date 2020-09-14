@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Pie } from "react-chartjs-2";
-import {Container} from 'semantic-ui-react';
+import { Pie } from 'react-chartjs-2';
+import { Container } from 'semantic-ui-react';
 // @ts-ignore
 var palette = require("google-palette");
 var convert = require("color-convert");
@@ -10,12 +10,12 @@ interface Props {
   width: any;
   height: any;
   title: string;
-  setUpdateFlag? : (flag : boolean) => void
-  setSelectedElementIndex? : (index : number) => void
+  setUpdateFlag?: (flag: boolean) => void
+  setSelectedElementIndex?: (index: number) => void
 }
 interface State {
-  updateFlag : boolean
-  data : any;
+  updateFlag: boolean
+  data: any;
 }
 
 export default class PieGraph extends Component<Props, State> {
@@ -37,20 +37,20 @@ export default class PieGraph extends Component<Props, State> {
       legend: {
         position: 'bottom',
         fullWidth: true,
-        width:60,
+        width: 60,
         labels: {
           boxWidth: 10
         }
       }
     },
-    updateFlag : false
+    updateFlag: false
   };
 
   shouldComponentUpdate(nextProps: any) {
     const { updateFlag } = this.state;
     if (updateFlag || this.state.data.datasets[0].data.length === 0) {
-      this.setState({updateFlag: false},
-        ()=>{
+      this.setState({ updateFlag: false },
+        () => {
           const propsData = this.props.data;
           const { generateBackgroundColor } = this;
           const { data } = this.state;
@@ -85,12 +85,12 @@ export default class PieGraph extends Component<Props, State> {
     );
     return list;
   };
-  handleItemClick = (elems : any) => {
-    const { setUpdateFlag , setSelectedElementIndex } = this.props;
-    if(typeof elems[0] !=='undefined' 
-    && typeof setUpdateFlag !== 'undefined' 
-    && typeof setSelectedElementIndex !== 'undefined'){
-      this.setState({updateFlag:true});
+  handleItemClick = (elems: any) => {
+    const { setUpdateFlag, setSelectedElementIndex } = this.props;
+    if (typeof elems[0] !== 'undefined'
+      && typeof setUpdateFlag !== 'undefined'
+      && typeof setSelectedElementIndex !== 'undefined') {
+      this.setState({ updateFlag: true });
       setUpdateFlag(true);
       setSelectedElementIndex(elems[0]._index);
     }
@@ -100,21 +100,21 @@ export default class PieGraph extends Component<Props, State> {
     const { width, height, title } = this.props;
     return (
       <div>
-        <div style={{fontWeight:700, fontSize:"20px"}}> {title} </div>
+        <div style={{ fontWeight: 700, fontSize: "20px" }}> {title} </div>
         {data.datasets[0].data.length === 0 && (
-          <Container style={{height:height, lineHeight:`${height}px`}}>
-                봉사 기록이 없어요. 이제 시작 해볼까요?
+          <Container style={{ height: height, lineHeight: `${height}px` }}>
+            봉사 기록이 없어요. 이제 시작 해볼까요?
           </Container>
         )}
         {data.datasets[0].data.length > 0 && (
-          <div style={{height:height, width:width, position:"relative", margin:"auto"}}>
-          <Pie
-            data={data}
-            width={width}
-            height={height}
-            options={options} // width, height 커스텀 사이즈로 하기 위해선 옵션에서 maintainAspectRatio: false 설정
-            getElementAtEvent={this.handleItemClick}
-          />
+          <div style={{ height: height, width: width, position: "relative", margin: "auto" }}>
+            <Pie
+              data={data}
+              width={width}
+              height={height}
+              options={options} // width, height 커스텀 사이즈로 하기 위해선 옵션에서 maintainAspectRatio: false 설정
+              getElementAtEvent={this.handleItemClick}
+            />
           </div>
         )}
       </div>

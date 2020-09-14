@@ -1,10 +1,7 @@
 import React from "react";
-import { RouteComponentProps } from "@reach/router";
+import { RouteComponentProps } from '@reach/router';
 import { Link } from "react-router-dom";
-import { Container, Dimmer, Loader, Form, Segment, Button } from "semantic-ui-react";
-// import "assets/css/style.scss";
-// import "assets/css/user.scss";
-// import "assets/mycss/error.scss";
+import { Container, Button } from "semantic-ui-react";
 
 interface IProps {
   location: {

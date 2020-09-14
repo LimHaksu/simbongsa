@@ -2,10 +2,9 @@ import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import * as postingActions from "redux/modules/posting";
-import * as userActions from "redux/modules/user"
 import { bindActionCreators } from "redux";
 import GoBackButton from "components/button/GoBackButton";
-import { Form, TextArea , Container, Button } from "semantic-ui-react";
+import { Form, TextArea, Container, Button } from "semantic-ui-react";
 import storage from "lib/storage";
 
 import './PostForm.css'
@@ -117,44 +116,44 @@ class PostingForm extends React.Component<any, any> {
 
         return (
             <Container>
-            <Form>
-                <label>
-                    <input type="radio" value="1" checked={this.state.p_status === "1"}
-                        onChange={this.handleStatusChange}
-                    />
+                <Form>
+                    <label>
+                        <input type="radio" value="1" checked={this.state.p_status === "1"}
+                            onChange={this.handleStatusChange}
+                        />
                     모집
             </label>
-                <label>
-                    <input type="radio" value="2" checked={this.state.p_status === "2"}
-                        onChange={this.handleStatusChange}
-                    />
+                    <label>
+                        <input type="radio" value="2" checked={this.state.p_status === "2"}
+                            onChange={this.handleStatusChange}
+                        />
                     후기
             </label>
-                <TextArea
-                    value={p_content}
-                    className="posting"
-                    name="content"
-                    id="p_content"
-                    placeholder="내용을 입력하세요."
-                    onChange={this.handleChange} />
-                <input
-                    type="file"
-                    id="files"
-                    multiple
-                    accept='image/*'
-                    onChange={this.handleFileSelect}
-                    value={selectedFiles}
-                />
-                <div className="buttons">
-                    <Button onClick={this.handleSubmit}>
-                        게시글 등록하기
+                    <TextArea
+                        value={p_content}
+                        className="posting"
+                        name="content"
+                        id="p_content"
+                        placeholder="내용을 입력하세요."
+                        onChange={this.handleChange} />
+                    <input
+                        type="file"
+                        id="files"
+                        multiple
+                        accept='image/*'
+                        onChange={this.handleFileSelect}
+                        value={selectedFiles}
+                    />
+                    <div className="buttons">
+                        <Button onClick={this.handleSubmit}>
+                            게시글 등록하기
             </Button>
 
-                    <GoBackButton
-                        text="취소하기"
-                    />
-                </div>
-            </Form>
+                        <GoBackButton
+                            text="취소하기"
+                        />
+                    </div>
+                </Form>
             </Container>
         );
     }

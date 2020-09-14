@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from "react";
-import {
-  Dropdown
-} from "semantic-ui-react";
+import { Dropdown } from "semantic-ui-react";
 import temp from "lib/json/temp.json";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -77,7 +75,7 @@ class Locationcontainer extends Component<Props, State> {
     return (
 
       <Fragment>
-        <div style={{ "margin": 1}} >
+        <div style={{ "margin": 1 }} >
           <Dropdown
             // placeholder={placeholder}
             value={input}
@@ -87,7 +85,7 @@ class Locationcontainer extends Component<Props, State> {
             onChange={handleChange}
             options={temp}
             onKeyDown={handleKeyDown}
-            style={{width:180}}
+            style={{ width: 180 }}
           // disabled={todos.size === 3}
           ></Dropdown>
         </div>

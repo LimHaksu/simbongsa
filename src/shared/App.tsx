@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Router from './Router'
-import { Grid, Segment, Dimmer, Loader } from "semantic-ui-react";
+import { Segment, Dimmer, Loader } from "semantic-ui-react";
 import { List } from "immutable"
 
 // 로컬에 저장
@@ -16,7 +16,6 @@ import jwt from "jsonwebtoken";
 import locationAllList from "lib/json/temp.json";
 import categoryAllList from "lib/json/searchCategory.json";
 
-import { Container, Image } from 'semantic-ui-react'
 import * as volActions from 'redux/modules/vol';
 interface IProps {
   UserActions: any
@@ -46,9 +45,8 @@ class App extends Component<IProps> {
 
     await this.initialSearch()
 
-    // history.push("/mainpage");
   };
-  initialSearch = () => {
+  initialSearch = async () => {
     const { input, VolActions, locations, categorys, times } = this.props
     let preferLocate = locations.toJS().map((location: any) => location.text)
     let preferCategory = categorys.toJS().map((category: any) => category.text)
@@ -70,7 +68,7 @@ class App extends Component<IProps> {
 
     const { bgnTm, endTm } = times.toJS()
 
-    
+
     VolActions.getVolList({ input: input, firstLocation: firstLocation, secondLocation: secondLocation, thirdLocation: thirdLocation, firstCategory: firstCategory, secondCategory: secondCategory, thirdCategory: thirdCategory, bgnTm: bgnTm, endTm: endTm })
     VolActions.getInitailList({ input: input, firstLocation: firstLocation, secondLocation: secondLocation, thirdLocation: thirdLocation, firstCategory: firstCategory, secondCategory: secondCategory, thirdCategory: thirdCategory, bgnTm: bgnTm, endTm: endTm, pageNum: 1 })
   }
@@ -79,43 +77,43 @@ class App extends Component<IProps> {
     if (preferInfo) {
       const info = preferInfo.toJS();
 
-      if(info.bgnTm === null){
+      if (info.bgnTm === null) {
         SearchActions.initialInsert({
           form: "times",
           key: "bgnTm",
           value: "00:00:00"
         });
       }
-      else{
+      else {
         SearchActions.initialInsert({
           form: "times",
           key: "bgnTm",
           value: info.bgnTm
         });
       }
-      if(info.endTm === null){
+      if (info.endTm === null) {
         SearchActions.initialInsert({
           form: "times",
           key: "endTm",
-          value: "24:00:00" 
-        });
-    }
-    else{
-      if(info.endTm === "23:59:59"){
-        SearchActions.initialInsert({
-          form: "times",
-          key: "endTm",
-          value: "24:00:00" 
+          value: "24:00:00"
         });
       }
-      else{
-      SearchActions.initialInsert({
-        form: "times",
-        key: "endTm",
-        value: info.endTm 
-      });
-    }
-    }
+      else {
+        if (info.endTm === "23:59:59") {
+          SearchActions.initialInsert({
+            form: "times",
+            key: "endTm",
+            value: "24:00:00"
+          });
+        }
+        else {
+          SearchActions.initialInsert({
+            form: "times",
+            key: "endTm",
+            value: info.endTm
+          });
+        }
+      }
       // 나이 관련
       const today = new Date();
       const year = today.getFullYear();
@@ -227,14 +225,14 @@ class App extends Component<IProps> {
     const { loading } = this.props;
     return (
       <div className="main--body">
-        <Segment style={{  }}>
+        <Segment style={{}}>
           {loading && (
             <Dimmer active inverted>
               <Loader>로딩중</Loader>
             </Dimmer>
           )}
         </Segment>
-          <Router />
+        <Router />
       </div>
     );
   }

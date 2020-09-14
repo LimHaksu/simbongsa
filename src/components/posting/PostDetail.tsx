@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from "react-redux";
 
 import { Image, Label, Icon, Divider, Loader } from 'semantic-ui-react'
-import Carousel from 'nuka-carousel'
+import Carousel from 'nuka-carousel';
 
 import CommentList from 'components/posting/CommentList'
 import CommentForm from 'components/posting/CommentForm'
@@ -28,15 +28,15 @@ interface Props {
         userId: string,
         files: []
     };
-    setUpdateFlag : (flag : boolean) => void;
+    setUpdateFlag: (flag: boolean) => void;
 }
-interface Istate{
+interface Istate {
     volunteer: any
-    updateFlag : boolean;
+    updateFlag: boolean;
 }
 
 class PostDetail extends React.Component<Props & any, Istate> {
-    state = { volunteer: null , updateFlag : false }
+    state = { volunteer: null, updateFlag: false }
     handleVote(id: number) {
         var { m_id } = this.props.user.toJS()
         const { setUpdateFlag } = this.props;
@@ -51,7 +51,7 @@ class PostDetail extends React.Component<Props & any, Istate> {
             .catch((err: any) => console.log(err))
     }
 
-    cancelVote(p_id: number){
+    cancelVote(p_id: number) {
         let { m_id } = this.props.user.toJS()
         const { setUpdateFlag } = this.props;
         PostingApi.deletePostVote(m_id, p_id)
@@ -71,26 +71,26 @@ class PostDetail extends React.Component<Props & any, Istate> {
             })
             .catch((err: any) => console.log(err));
     }
-    componentDidMount(){
+    componentDidMount() {
         var { v_id } = this.props.post
         this.voldetail(v_id)
     }
     componentDidUpdate(prevProps: any) {
         const { updateFlag } = this.state;
-        if(updateFlag){
-            this.setState({updateFlag : false});
+        if (updateFlag) {
+            this.setState({ updateFlag: false });
         }
     }
-    handleUpdateFlag = (flag : boolean) => {
-        this.setState({updateFlag : flag});
+    handleUpdateFlag = (flag: boolean) => {
+        this.setState({ updateFlag: flag });
     }
     render() {
         var { m_id, userId } = this.props.user.toJS()
         const { volunteer, updateFlag } = this.state
-        if(volunteer===null){
-            return(
-                <div/>
-             )
+        if (volunteer === null) {
+            return (
+                <div />
+            )
         }
         const images = this.props.post.files.map((file: any, i: number) => {
             return (
@@ -113,28 +113,28 @@ class PostDetail extends React.Component<Props & any, Istate> {
                     </div>
                     <Divider />
                     <div className="label">
-                        {this.props.post.p_status==="1" && (
-                        this.props.post.post_vote_members.includes(m_id)?
-                            (<Label
-                                as='a'
-                                color='grey'
-                                size="large"
-                                onClick={(id: any) => this.cancelVote(this.props.post.p_id)}
-                            >
-                                <Icon name="hand paper" /> {this.props.post.post_vote_members.length} <span style={{ marginLeft: "10px", marginRight: "10px" }}>함께 해요</span>
+                        {this.props.post.p_status === "1" && (
+                            this.props.post.post_vote_members.includes(m_id) ?
+                                (<Label
+                                    as='a'
+                                    color='grey'
+                                    size="large"
+                                    onClick={(id: any) => this.cancelVote(this.props.post.p_id)}
+                                >
+                                    <Icon name="hand paper" /> {this.props.post.post_vote_members.length} <span style={{ marginLeft: "10px", marginRight: "10px" }}>함께 해요</span>
 
-                            </Label>)
-                            : (<Label
-                                as='a'
-                                color='orange'
-                                size="large"
-                                onClick={(id: any) => this.handleVote(this.props.post.p_id)}
-                            >
-                                <Icon name="hand paper" /> {this.props.post.post_vote_members.length} <span style={{ marginLeft: "10px", marginRight: "10px" }}>함께 해요</span>
-                            </Label>)
+                                </Label>)
+                                : (<Label
+                                    as='a'
+                                    color='orange'
+                                    size="large"
+                                    onClick={(id: any) => this.handleVote(this.props.post.p_id)}
+                                >
+                                    <Icon name="hand paper" /> {this.props.post.post_vote_members.length} <span style={{ marginLeft: "10px", marginRight: "10px" }}>함께 해요</span>
+                                </Label>)
                         )}
                     </div>
-                    
+
                     <Vol volunteer={volunteer} v_id={this.props.post.v_id} ></Vol>
                     {/* <Link to={{ pathname: `/vol/${this.props.post.v_id}/detail` }}>
                         <p style={{ textAlign: "center", padding: "0.5rem", color: "rgb(100, 100, 100)" }}>
@@ -143,7 +143,7 @@ class PostDetail extends React.Component<Props & any, Istate> {
                     </Link>
                     <Divider /> */}
                     <div className="comment">
-                        <CommentList inP_id={this.props.post.p_id} updateFlag={updateFlag}/>
+                        <CommentList inP_id={this.props.post.p_id} updateFlag={updateFlag} />
                         <CommentForm inP_id={this.props.post.p_id} handleUpdateFlag={this.handleUpdateFlag} />
                     </div>
                 </div>

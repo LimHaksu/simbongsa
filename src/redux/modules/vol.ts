@@ -1,13 +1,7 @@
 import { createAction, handleActions } from "redux-actions";
 import { pender } from "redux-pender"; // aixos 응답 이후 작업을 할때 pender 사용
-import { Record, Map, List } from "immutable"; // json 형태의 객체 -> Map으로 만들어 immutable 속성 유지
+import { Map, List } from "immutable"; // json 형태의 객체 -> Map으로 만들어 immutable 속성 유지
 import * as VolApi from "lib/api/VolApi";
-import { number } from "prop-types";
-
-type CreatePayload = string;
-type RemovePayload = number;
-type TogglePayload = number;
-type ChangeInputPayload = string;
 
 // 가장 아래 있는 handleActions와 연결해줌
 const SET_SELECTED_VOLUNTEER = "vol/GET_VOL_BY_ID"; // v_id로 봉사정보 가져오기
@@ -110,7 +104,7 @@ export default handleActions<any>(
     [DAY_VOL_LIST]: (state, action) => {
       return state.set("volunteersForCal", List(action.payload));
     },
-    [RESET_VOLUNTEER_FOR_LIST] : (state) =>{
+    [RESET_VOLUNTEER_FOR_LIST]: (state) => {
       return state.set("volunteerForList", List([]));
     },
     ...pender({

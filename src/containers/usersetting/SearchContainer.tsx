@@ -14,17 +14,17 @@ import {
 import { Container, Grid } from "semantic-ui-react";
 import CurationModal from './CurationModal'
 interface Iprops {
-  locations: any;
-  categorys: any;
-  times: any;
-  ages: any;
-  SearchActions: any;
-  UserActions: any;
-  history: any;
-  isRegister: boolean
-  userId: string
+  locations?: any;
+  categorys?: any;
+  times?: any;
+  ages?: any;
+  SearchActions?: any;
+  UserActions?: any;
+  history?: any;
+  isRegister?: boolean
+  userId?: string
 }
-class SearchContainer extends Component<any, any> {
+class SearchContainer extends Component<Iprops, any> {
 
   render() {
     const { isRegister } = this.props

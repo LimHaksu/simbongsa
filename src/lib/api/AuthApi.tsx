@@ -1,6 +1,4 @@
 import axios, { AxiosResponse } from "axios";
-import { List } from "immutable";
-import storage from "lib/storage";
 
 const restBaseApi = process.env.REACT_APP_REST_BASE_API!;
 

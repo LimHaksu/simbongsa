@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import * as postingAction from "redux/modules/posting";
 import * as volActions from "redux/modules/vol"
 import { List } from "immutable";
 import { connect } from "react-redux";

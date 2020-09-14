@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FunctionComponent } from 'react';
 
 interface Props {
     text: string;
@@ -7,7 +7,7 @@ interface Props {
     onRemove(): void;
 }
 
-const SettingItem: React.SFC<Props> = ({ text, done, onToggle, onRemove }) => (
+const SettingItem: FunctionComponent<Props> = ({ text, done, onToggle, onRemove }) => (
     <li>
         <b
             onClick={onToggle}

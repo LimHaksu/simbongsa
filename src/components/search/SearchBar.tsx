@@ -1,4 +1,3 @@
-// import _ from 'lodash'
 import React, { Fragment } from 'react'
 import SearchPresenter from 'components/search/SearchPresenter';
 // redux 관련
@@ -27,7 +26,7 @@ class SearchBar extends React.Component<Iprops, Istate> {
         error: "",
     }
     handleSubmit = (event: any) => {
-        const {  SearchActions } = this.props
+        const { SearchActions } = this.props
         event.preventDefault()
 
         this.searchByTerm();
@@ -63,13 +62,13 @@ class SearchBar extends React.Component<Iprops, Istate> {
         if (ages.toJS().adult === true) {
             age = "1992-01-01";
         } else if (ages.toJS().youth === true) {
-        age = "2005-01-01";
+            age = "2005-01-01";
         }
         UserActions.changeLoading(true)
         try {
-            VolActions.getVolList({ input: input, firstLocation: firstLocation, secondLocation: secondLocation, thirdLocation: thirdLocation, firstCategory: firstCategory, secondCategory: secondCategory, thirdCategory: thirdCategory, bgnTm: times.toJS().bgnTm, endTm: times.toJS().endTm, age:age })
-            VolActions.getInitailList({ input: input, firstLocation: firstLocation, secondLocation: secondLocation, thirdLocation: thirdLocation, firstCategory: firstCategory, secondCategory: secondCategory, thirdCategory: thirdCategory, bgnTm: times.toJS().bgnTm, endTm: times.toJS().endTm, age:age, pageNum: 1 })
-        } catch{
+            VolActions.getVolList({ input: input, firstLocation: firstLocation, secondLocation: secondLocation, thirdLocation: thirdLocation, firstCategory: firstCategory, secondCategory: secondCategory, thirdCategory: thirdCategory, bgnTm: times.toJS().bgnTm, endTm: times.toJS().endTm, age: age })
+            VolActions.getInitailList({ input: input, firstLocation: firstLocation, secondLocation: secondLocation, thirdLocation: thirdLocation, firstCategory: firstCategory, secondCategory: secondCategory, thirdCategory: thirdCategory, bgnTm: times.toJS().bgnTm, endTm: times.toJS().endTm, age: age, pageNum: 1 })
+        } catch {
             this.setState({ error: "Can't find result." })
         } finally {
             UserActions.changeLoading(false)

@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Responsive, Menu, Visibility, Segment, Button, Image, Dropdown } from "semantic-ui-react";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as authActions from "redux/modules/auth";
@@ -8,25 +8,25 @@ import * as pageActions from 'redux/modules/page';
 import * as volActions from "redux/modules/vol";
 import * as userActions from "redux/modules/user";
 import storage from "lib/storage";
-interface Props {}
+interface Props { }
 
 interface IState {
   activeItem: string;
 }
 export interface IAppProps {
-  loginCheck : boolean;
+  loginCheck: boolean;
   history: any;
-  PageActions : any;
-  VolActions : any;
-  UserActions : any;
-  AuthActions : any;
+  PageActions: any;
+  VolActions: any;
+  UserActions: any;
+  AuthActions: any;
 }
 
 class HeaderForDesktop extends React.Component<
   IAppProps,
   IState
-> {
-  state = { activeItem: ""};
+  > {
+  state = { activeItem: "" };
   handleLogout = async () => {
     const { AuthActions, history } = this.props;
     storage.remove("token");
@@ -62,14 +62,14 @@ class HeaderForDesktop extends React.Component<
     return (
       <div>
         <Responsive minWidth={1001}>
-        <Menu
-              fixed={"top"}
-              pointing
-              secondary
-              style={{backgroundColor:"white"}}
-              // size='large'
-            >
-              <Container>
+          <Menu
+            fixed={"top"}
+            pointing
+            secondary
+            style={{ backgroundColor: "white" }}
+          // size='large'
+          >
+            <Container>
               <Menu.Item position="left"></Menu.Item>
               <Menu.Item name="HOME" className="goHome">
                 <Link to="/"><Image src="/images/logo2.png" style={{ width: "6rem", padding: "0.3rem", marginLeft: "0.2rem" }} /></Link>
@@ -95,7 +95,7 @@ class HeaderForDesktop extends React.Component<
               >
                 MY
               </Menu.Item>}
-              {loginCheck &&   <Menu.Item className="located" style={{fontWeight:600, fontSize:"17px", width:"250px"}}>
+              {loginCheck && <Menu.Item className="located" style={{ fontWeight: 600, fontSize: "17px", width: "250px" }}>
                 {url === "mainpage" && ("봉사활동 맞춤검색")}
                 {url === "feed" && ("피드")}
                 {(url === "mypage" || url === "usersetting") && ("마이페이지")}
@@ -107,7 +107,7 @@ class HeaderForDesktop extends React.Component<
                 {window.location.href.includes("postinglist") && ("모집 & 후기")}
               </Menu.Item>}
               {!loginCheck &&
-              <Menu.Item style={{width:"445.23px"}}></Menu.Item>
+                <Menu.Item style={{ width: "445.23px" }}></Menu.Item>
               }
               <Menu.Item className="icons" >
                 <Dropdown compact icon="user" style={{ marginRight: "2.5rem" }}>
@@ -119,9 +119,9 @@ class HeaderForDesktop extends React.Component<
                           </Link>
                       </Dropdown.Item>
                     ) : (
-                        <div>                 
+                        <div>
                           <Dropdown.Item onClick={this.handleLogout}>
-                          로그아웃
+                            로그아웃
                         </Dropdown.Item>
                           <Dropdown.Divider />
                           <Dropdown.Item>
@@ -133,11 +133,11 @@ class HeaderForDesktop extends React.Component<
 
                   </Dropdown.Menu>
                 </Dropdown>
-                </Menu.Item>
-                
+              </Menu.Item>
+
               <Menu.Item position="right"></Menu.Item>
-              </Container>
-            </Menu>
+            </Container>
+          </Menu>
         </Responsive>
       </div>
     );

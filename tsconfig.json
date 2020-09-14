@@ -14,9 +14,7 @@
     ],
     "jsx": "react",
     "module": "esnext",
-    // "noImplicitAny": false,
     "moduleResolution": "node",
-    "noImplicitReturns": true,
     "downlevelIteration": true,
     "sourceMap": true,
     "typeRoots": [

@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { List } from "immutable";
 import { connect } from "react-redux";
-// import * as volActions from "redux/modules/volunteer";
 import * as volActions from "redux/modules/vol";
 import * as userActions from "redux/modules/user";
 import { bindActionCreators } from "redux";
 import InfiniteScroll from "react-infinite-scroll-component";
-import PostCard from "components/posting/PostCard";
-import {Container} from 'semantic-ui-react'
-// import "containers/posting/PostingList.css";
+// import PostCard from "components/posting/PostCard";
+import { Container } from 'semantic-ui-react'
+
 interface Props {
   UserActions: any;
   feedList: List<any>;
@@ -18,10 +17,10 @@ interface Props {
   normalFeedList: any;
 
 }
-interface State { 
-  isGetFeedListComplete : boolean;
-   pageNum : number;
-   flag : boolean;
+interface State {
+  isGetFeedListComplete: boolean;
+  pageNum: number;
+  flag: boolean;
 }
 
 class Feed extends Component<Props, State> {
@@ -30,43 +29,43 @@ class Feed extends Component<Props, State> {
     // width: window.innerWidth,
     // height: window.innerHeight - 345
     flag: false,
-    isGetFeedListComplete : false
+    isGetFeedListComplete: false
   };
   // v_id & 팔로우 여부로
   v_id = this.props.match.params.id;
   restAPI = process.env.REACT_APP_REST_BASE_API + "/rest/VolFeed/";
   async componentDidMount() {
-    setTimeout(async ()=>{
+    setTimeout(async () => {
       const { UserActions, mId } = this.props;
       const { pageNum } = this.state;
-      this.setState({isGetFeedListComplete : false},async()=>{
+      this.setState({ isGetFeedListComplete: false }, async () => {
         await UserActions.getPreferFeedList(mId, pageNum);
         await UserActions.getNormalFeedList(mId, pageNum);
-        this.setState({ pageNum: pageNum + 1, isGetFeedListComplete : true});
+        this.setState({ pageNum: pageNum + 1, isGetFeedListComplete: true });
       })
-    },300);
+    }, 300);
   }
 
   async loadMoreData() {
     const { UserActions, mId } = this.props;
     const { pageNum } = this.state;
-    this.setState({isGetFeedListComplete : false}, async()=>{
+    this.setState({ isGetFeedListComplete: false }, async () => {
       await UserActions.getPreferFeedList(mId, pageNum);
       await UserActions.getNormalFeedList(mId, pageNum);
-      this.setState({ pageNum: pageNum + 1 , isGetFeedListComplete : true});
+      this.setState({ pageNum: pageNum + 1, isGetFeedListComplete: true });
     })
   }
 
-  shouldComponentUpdate(nextProps:any, nextState : any){
-    if(nextState.isGetFeedListComplete){
-      this.setState({isGetFeedListComplete:false})
+  shouldComponentUpdate(nextProps: any, nextState: any) {
+    if (nextState.isGetFeedListComplete) {
+      this.setState({ isGetFeedListComplete: false })
       return true;
     }
     return false;
   }
 
-  setFlag = (flag : boolean) =>{
-    this.setState({ flag : flag });
+  setFlag = (flag: boolean) => {
+    this.setState({ flag: flag });
   }
 
   async componentDidUpdate() {
@@ -74,14 +73,15 @@ class Feed extends Component<Props, State> {
       this.setState({
         pageNum: 1,
         flag: false,
-      isGetFeedListComplete : false},
-        async()=>{
+        isGetFeedListComplete: false
+      },
+        async () => {
           const { UserActions, mId } = this.props;
           const { pageNum } = this.state;
           await UserActions.getPreferFeedList(mId, pageNum);
           await UserActions.getNormalFeedList(mId, pageNum);
-          this.setState({ pageNum: pageNum + 1, isGetFeedListComplete : true });
-      })
+          this.setState({ pageNum: pageNum + 1, isGetFeedListComplete: true });
+        })
     }
   }
 
@@ -106,7 +106,7 @@ class Feed extends Component<Props, State> {
         if (idxP === pLength) {
           break;
         }
-        postingList.push(<PostCard color="white" post={preferFeedList[idxP]} key={idx} setFlag={this.setFlag} />);
+        // postingList.push(<PostCard color="white" post={preferFeedList[idxP]} key={idx} setFlag={this.setFlag} />);
         idx += 1;
         idxP += 1;
       }
@@ -115,7 +115,7 @@ class Feed extends Component<Props, State> {
           break;
         }
         postingList.push(
-          <PostCard color="#ffc164" post={normalFeedList[idxN]} key={idx} setFlag={this.setFlag}/>
+          // <PostCard color="#ffc164" post={normalFeedList[idxN]} key={idx} setFlag={this.setFlag} />
         );
         idx += 1;
         idxN += 1;
@@ -123,15 +123,15 @@ class Feed extends Component<Props, State> {
     }
     return (
       <Container>
-      <InfiniteScroll
-        dataLength={postingList.length}
-        next={this.loadMoreData.bind(this)}
-        hasMore={pLength >= (pageNum - 1) * 8 || nLength >= (pageNum - 1) * 2}
-        loader={<p>게시글 목록을 불러오는 중</p>}
-        endMessage={<p>모든 정보를 확인했습니다.</p>}
-      >
-        {postingList}
-      </InfiniteScroll>
+        <InfiniteScroll
+          dataLength={postingList.length}
+          next={this.loadMoreData.bind(this)}
+          hasMore={pLength >= (pageNum - 1) * 8 || nLength >= (pageNum - 1) * 2}
+          loader={<p>게시글 목록을 불러오는 중</p>}
+          endMessage={<p>모든 정보를 확인했습니다.</p>}
+        >
+          {postingList}
+        </InfiniteScroll>
       </Container>
     );
   }

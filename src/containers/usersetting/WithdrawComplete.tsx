@@ -1,13 +1,6 @@
 import React, { Component } from 'react'
 
-interface Props {
-
-}
-interface State {
-
-}
-
-export default class WithdrawComplete extends Component<Props, State> {
+export default class WithdrawComplete extends Component {
     state = {}
     componentDidMount() {
         setTimeout(function () {
