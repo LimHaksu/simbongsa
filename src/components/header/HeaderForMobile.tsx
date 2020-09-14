@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import storage from "lib/storage";
 import * as authActions from 'redux/modules/auth';
 import './Header.css'
+import logo2 from 'assets/images/logo2.png';
+
 interface Props { }
 
 interface IState {
@@ -44,7 +46,7 @@ class HeaderForMobile extends React.Component<
               style={{ width: "100vw" }}
             >
               <Menu.Item name="HOME" className="goHome">
-                <Link to="/"><Image src="/images/logo2.png" style={{ width: "6rem", padding: "0.3rem", marginLeft: "0.2rem" }} /></Link>
+                <Link to="/"><Image src={logo2} style={{ width: "6rem", padding: "0.3rem", marginLeft: "0.2rem" }} /></Link>
               </Menu.Item>
               <Menu.Item className="located">
                 {url === "mainpage" && ("봉사활동 맞춤검색")}

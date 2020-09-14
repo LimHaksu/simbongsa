@@ -34,6 +34,8 @@ import { Link } from "react-router-dom";
 // jwt
 import jwt from 'jsonwebtoken';
 
+import logo1 from 'assets/images/logo1.png';
+
 interface validate {
   [name: string]: (value: string) => boolean;
 }
@@ -368,7 +370,7 @@ class Login extends React.Component<any, any> {
         >
           <Grid.Column style={{ maxWidth: 450 }}>
             {/* <Header as="h2" color="orange" textAlign="center"> */}
-            <Image centered size="tiny" src="/images/logo1.png" />
+            <Image centered size="tiny" src={logo1} />
             {/* </Header> */}
             <Form size="large">
               <Segment stacked>

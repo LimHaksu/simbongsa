@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Responsive, Menu, Visibility, Segment, Button, Image, Dropdown } from "semantic-ui-react";
+import { Container, Responsive, Menu, Image, Dropdown } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -8,6 +8,8 @@ import * as pageActions from 'redux/modules/page';
 import * as volActions from "redux/modules/vol";
 import * as userActions from "redux/modules/user";
 import storage from "lib/storage";
+import logo2 from 'assets/images/logo2.png';
+
 interface Props { }
 
 interface IState {
@@ -28,7 +30,7 @@ class HeaderForDesktop extends React.Component<
   > {
   state = { activeItem: "" };
   handleLogout = async () => {
-    const { AuthActions, history } = this.props;
+    const { AuthActions } = this.props;
     storage.remove("token");
     AuthActions.loginCheck(false);
     window.location.href = `${process.env.REACT_APP_FRONT_URI}`;
@@ -72,7 +74,7 @@ class HeaderForDesktop extends React.Component<
             <Container>
               <Menu.Item position="left"></Menu.Item>
               <Menu.Item name="HOME" className="goHome">
-                <Link to="/"><Image src="/images/logo2.png" style={{ width: "6rem", padding: "0.3rem", marginLeft: "0.2rem" }} /></Link>
+                <Link to="/"><Image src={logo2} style={{ width: "6rem", padding: "0.3rem", marginLeft: "0.2rem" }} /></Link>
               </Menu.Item>
               {loginCheck && <Menu.Item
                 name="HOME"

@@ -17,6 +17,8 @@ import { Button, Grid, Image, Form, Segment, Container, Dimmer, Loader } from 's
 //debouce 특정 함수가 반복적으로 일어나면, 바로 실행하지 않고, 주어진 시간만큼 쉬어줘야 함수가 실행된다.
 import { debounce } from 'lodash'
 
+import logo1 from 'assets/images/logo1.png';
+
 interface validate {
   [name: string]: (value: string) => boolean;
 }
@@ -187,7 +189,7 @@ class Join extends React.Component<any, any> {
         >
           <Grid.Column style={{ maxWidth: 450 }}>
             {/* <Header as="h2" color="orange" textAlign="center"> */}
-            <Image centered size="tiny" src="/images/logo1.png" />
+            <Image centered size="tiny" src={logo1} />
             {/* </Header> */}
 
 
