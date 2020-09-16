@@ -49,7 +49,7 @@ class FindPassword extends React.Component<Props> {
 
   sendEmail = async () => {
     const { email } = this.state;
-    const { history, AuthActions } = this.props;
+    const { history } = this.props;
     this.setState({ isMailSending: true }, async () => {
       await AuthApi.changePasswordEmailSend(email);
       this.setState({ isMailSending: false },)
@@ -57,7 +57,6 @@ class FindPassword extends React.Component<Props> {
     })
   };
   render() {
-    const { sendEmail } = this;
     const { email, isMailSending, error } = this.state;
     return (
       <Container>

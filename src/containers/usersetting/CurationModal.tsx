@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as searchActions from "redux/modules/search";
 import * as userActions from "redux/modules/user";
-interface IProps {
+interface Props {
   locations: any;
   categorys: any;
   times: any;
@@ -14,10 +14,10 @@ interface IProps {
   isRegister: boolean
   userId: string
 }
-interface IState {
+interface State {
   modalOpen: boolean
 }
-class CurationModal extends Component<IProps, IState> {
+class CurationModal extends Component<Props, State> {
   state = { modalOpen: false }
 
   handleOpen = () => this.setState({ modalOpen: true })

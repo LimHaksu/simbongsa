@@ -1,11 +1,12 @@
 import axios from "axios";
 import storage from "lib/storage";
+import getHeaders from './getHeaders';
 
 const restBaseApi = process.env.REACT_APP_REST_BASE_API!;
 
 export const getVolListBySearch = ({ input, firstLocation, secondLocation, thirdLocation, firstCategory, secondCategory, thirdCategory, bgnTm, endTm, age }: any) => {
   try {
-    const token = "Bearer " + storage.get("token");
+    const headers = getHeaders();
     let url = restBaseApi + '/vol/titles/4000/1/filtering/?'
     let isAmpersand = false
     if (firstLocation[0] !== 'null') {
@@ -72,9 +73,7 @@ export const getVolListBySearch = ({ input, firstLocation, secondLocation, third
 
     return axios.get(
       url,
-      //restBaseApi + `/vol/titles/4000/1/filtering/?r_sidoNm1=${firstLocation[0]}&r_sidoNm2=${secondLocation[0]}&r_sidoNm3=${thirdLocation[0]}&r_gugunNm1=${firstLocation[1]}&r_gugunNm2=${secondLocation[1]}&r_gugunNm3=${thirdLocation[1]}&ca_highNm1=${firstCategory}&ca_highNm2=${secondCategory}&ca_highNm3=${thirdCategory}&v_bgnTm=${bgnTm}&v_endTm=${endTm}&vol_title=${input}`,
-      // v_bgnTm=${bgnTm}&v_endTm=${endTm}&vol_title=${input}`,
-      { headers: { Authorization: token } }
+      { headers }
     ); // 1/1  (페이지당 한개)/(1페이지)
   } catch (error) {
     console.log(error);
@@ -84,10 +83,9 @@ export const getVolListBySearch = ({ input, firstLocation, secondLocation, third
 
 export const getVolDetail = (id: number): any => {
   try {
-
-    const token = "Bearer " + storage.get("token");
+    const headers = getHeaders();
     return axios.get(restBaseApi + "/vol/detail/" + id, {
-      headers: { Authorization: token }
+      headers
     });
   } catch (error) {
     console.log(error);
@@ -96,7 +94,7 @@ export const getVolDetail = (id: number): any => {
 };
 export const getVolListBySearchPage = ({ input, firstLocation, secondLocation, thirdLocation, firstCategory, secondCategory, thirdCategory, bgnTm, endTm, pageNum, age }: any) => {
   try {
-    const token = "Bearer " + storage.get("token");
+    const headers = getHeaders();
     let url = restBaseApi + `/vol/titles/10/${pageNum}/filtering/?`
     let isAmpersand = false
     if (firstLocation[0] !== 'null') {
@@ -163,9 +161,7 @@ export const getVolListBySearchPage = ({ input, firstLocation, secondLocation, t
 
     return axios.get(
       url,
-      //restBaseApi + `/vol/titles/4000/1/filtering/?r_sidoNm1=${firstLocation[0]}&r_sidoNm2=${secondLocation[0]}&r_sidoNm3=${thirdLocation[0]}&r_gugunNm1=${firstLocation[1]}&r_gugunNm2=${secondLocation[1]}&r_gugunNm3=${thirdLocation[1]}&ca_highNm1=${firstCategory}&ca_highNm2=${secondCategory}&ca_highNm3=${thirdCategory}&v_bgnTm=${bgnTm}&v_endTm=${endTm}&vol_title=${input}`,
-      // v_bgnTm=${bgnTm}&v_endTm=${endTm}&vol_title=${input}`,
-      { headers: { Authorization: token } }
+      { headers }
     ); // 1/1  (페이지당 한개)/(1페이지)
   } catch (error) {
     console.log(error);
@@ -176,9 +172,9 @@ export const getVolListBySearchPage = ({ input, firstLocation, secondLocation, t
 
 export const getVolListByUserId = (userId: string): any => {
   try {
-    const token = "Bearer " + storage.get("token");
+    const headers = getHeaders();
     return axios.get(restBaseApi + "/rest/Member/" + userId + "/Vote", {
-      headers: { Authorization: token }
+      headers
     });
   } catch (error) {
     return true;
@@ -187,9 +183,9 @@ export const getVolListByUserId = (userId: string): any => {
 
 export const getVolFeed = (v_id: string, pageNum: number): any => {
   try {
-    const token = "Bearer " + storage.get('token');
+    const headers = getHeaders();
     return axios.get(`${restBaseApi}/rest/VolFeed/${v_id}/10/${pageNum}`, {
-      headers: { Authorization: token }
+      headers
     });
   } catch (error) {
     return error;

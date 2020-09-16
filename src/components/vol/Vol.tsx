@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import CertLabel from 'components/label/CertLabel'
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
@@ -10,7 +10,7 @@ interface Props {
     volunteer: any;
 }
 
-class Vol extends React.Component<Props & any, any> {
+class Vol extends Component<Props, any> {
     render() {
         const url = window.location.href;
         const { volunteer } = this.props;
@@ -23,15 +23,15 @@ class Vol extends React.Component<Props & any, any> {
                     volunteer={volunteer}
                 />
                 {!url.match(`postinglist`) &&
-                <div className="linktodetail">
-                    <Link
-                        to={{
-                            pathname: `vol/${volunteer.v_id}/detail`,
-                            state: { volunteer }
-                        }}
-                    >
-                        상세보기</Link>
-                </div>
+                    <div className="linktodetail">
+                        <Link
+                            to={{
+                                pathname: `vol/${volunteer.v_id}/detail`,
+                                state: { volunteer }
+                            }}
+                        >
+                            상세보기</Link>
+                    </div>
                 }
                 <div className="listtitle">
                     {volunteer.v_title}

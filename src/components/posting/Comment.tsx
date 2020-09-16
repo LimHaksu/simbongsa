@@ -4,8 +4,7 @@ import { Icon, Confirm } from 'semantic-ui-react'
 import { connect } from "react-redux";
 import './Comment.css'
 
-
-interface IProps {
+interface Props {
     comment: {
         c_content: string,
         c_id: number,
@@ -14,10 +13,10 @@ interface IProps {
         userId: string,
     },
     inP_id: number;
-    setUpdateFlag : (flag : boolean) => void
+    setUpdateFlag: (flag: boolean) => void
 }
 
-class Comment extends React.Component<IProps & any, {}>{
+class Comment extends React.Component<Props & any, {}>{
     state = {
         open: false,
         result: false
@@ -34,9 +33,7 @@ class Comment extends React.Component<IProps & any, {}>{
             .then((res: any) => {
                 this.props.setUpdateFlag(true);
             });
-        // window.location.reload(true);
     }
-
 
     render() {
         var { m_id } = this.props.user.toJS()
@@ -44,11 +41,10 @@ class Comment extends React.Component<IProps & any, {}>{
             this.deleteComment(this.props.comment.c_id)
             this.setState({ result: false })
         }
-
         return (
             <div>
                 <span className="name">{this.props.comment.userId}</span>
-                {m_id == this.props.comment.m_id &&
+                {m_id === this.props.comment.m_id &&
                     <Icon style={{ float: 'right' }} name="delete" onClick={this.show} />
                 }
                 < br />

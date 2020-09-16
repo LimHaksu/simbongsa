@@ -13,28 +13,31 @@ interface Props {
     volunteers: any
     calActions: any
 }
-function Calendar(props: Props) {
+const Calendar = (props: Props) => {
+    const { date, changeDate, toggle, volunteers, changeToggle, dayVolList, calActions } = props;
     return (
         <div className="Calendar">
-            <Head date={props.date} changeDate={props.changeDate} toggle={props.toggle} volunteers={props.volunteers} changeToggle={props.changeToggle} dayVolList={props.dayVolList} calActions={props.calActions} />
-            <Body date={props.date} changeDate={props.changeDate} toggle={props.toggle} volunteers={props.volunteers} changeToggle={props.changeToggle} dayVolList={props.dayVolList} calActions={props.calActions} />
+            <Head date={date} changeDate={changeDate} toggle={toggle} volunteers={volunteers} changeToggle={changeToggle} dayVolList={dayVolList} calActions={calActions} />
+            <Body date={date} changeDate={changeDate} toggle={toggle} volunteers={volunteers} changeToggle={changeToggle} dayVolList={dayVolList} calActions={calActions} />
         </div>
     )
 }
-function Head(props: Props) {
+const Head = (props: Props) => {
+    const { calActions, changeDate, date } = props;
     return (
         <div className="Head">
-            <button onClick={() => props.calActions(props.date.clone().subtract(1, 'month'), false)}><MdChevronLeft /></button>
-            <span className="title" onClick={() => props.changeDate(moment())}>{props.date.format('MMMM YYYY')}</span>
-            <button onClick={() => props.calActions(props.date.clone().add(1, 'month'), false)}><MdChevronRight /></button>
+            <button onClick={() => calActions(date.clone().subtract(1, 'month'), false)}><MdChevronLeft /></button>
+            <span className="title" onClick={() => changeDate(moment())}>{date.format('MMMM YYYY')}</span>
+            <button onClick={() => calActions(date.clone().add(1, 'month'), false)}><MdChevronRight /></button>
         </div>
     )
 }
 
-function Body(props: Props) {
+const Body = (props: Props) => {
+    const { date, volunteers, calActions } = props;
     function generate() {
-        const startWeek = props.date.clone().startOf('month').week();
-        const endWeek = props.date.clone().endOf('month').week() === 1 ? 53 : props.date.clone().endOf('month').week();
+        const startWeek = date.clone().startOf('month').week();
+        const endWeek = date.clone().endOf('month').week() === 1 ? 53 : date.clone().endOf('month').week();
         let calendar = [] as any;
         let idx = 0;
         for (let week = startWeek; week <= endWeek; week++, idx++) {
@@ -42,11 +45,11 @@ function Body(props: Props) {
                 <div className="row" key={week} id={'id' + idx.toString()}>
                     {
                         Array(7).fill(0).map((n, i) => {
-                            let current = props.date.clone().week(week).startOf('week').add(n + i, 'day')
-                            let isSelected = props.date.format('YYYYMMDD') === current.format('YYYYMMDD') ? 'selected' : '';
+                            let current = date.clone().week(week).startOf('week').add(n + i, 'day')
+                            let isSelected = date.format('YYYYMMDD') === current.format('YYYYMMDD') ? 'selected' : '';
                             let isToday = moment().format('YYYYMMDD') === current.format('YYYYMMDD') ? 'today' : '';
-                            let isGrayed = current.format('MM') === props.date.format('MM') ? '' : 'grayed';
-                            let isVol = props.volunteers.filter((volunteer: any) => volunteer.v_pBgnD == current.format('YYYY-MM-DD'));
+                            let isGrayed = current.format('MM') === date.format('MM') ? '' : 'grayed';
+                            let isVol = volunteers.filter((volunteer: any) => volunteer.v_pBgnD == current.format('YYYY-MM-DD'));
                             if (isSelected === 'selected') {
                             }
                             let isCounted = isVol.size
@@ -56,8 +59,8 @@ function Body(props: Props) {
                             }
                             return (
                                 <Fragment key={i}>
-                                    <div className={`box`} onClick={() => props.calActions(current, true, isVol)}>
-                                        {Expressed && <Button className={`count`} size='mini' onClick={() => props.calActions(current, true, isVol)}>{isCounted}개</Button>}
+                                    <div className={`box`} onClick={() => calActions(current, true, isVol)}>
+                                        {Expressed && <Button className={`count`} size='mini' onClick={() => calActions(current, true, isVol)}>{isCounted}개</Button>}
                                         <span className={`text ${isSelected} ${isGrayed} ${isToday}`}>{current.format('D')}</span>
                                     </div>
                                 </Fragment>

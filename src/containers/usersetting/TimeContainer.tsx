@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as searchActions from "redux/modules/search";
 import "./TimeContainer.scss"
-import { withStyles, makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { withStyles, } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
 
 const iOSBoxShadow =
@@ -58,92 +58,92 @@ const IOSSlider = withStyles({
   },
 })(Slider);
 const marks = [
-    {
-      value: 0,
-      label: '0시',
-    },
-    {
-      value: 12,
-      label: '12시',
-    },
-    {
-      value: 24,
-      label: '24시',
-    },
-  ];
+  {
+    value: 0,
+    label: '0시',
+  },
+  {
+    value: 12,
+    label: '12시',
+  },
+  {
+    value: 24,
+    label: '24시',
+  },
+];
 class TimeContainer extends Component<any, any> {
-  state = {value: [0, 24]};
-    componentDidMount(){
-      const { times } =  this.props
-      const { bgnTm, endTm } = times.toJS()
-      let bgnTmInit = Number(bgnTm.split(":")[0])
-      let endTmInit= 24
-      if (endTm === "23:59:59"){
-        endTmInit = Number(endTm.split(":")[0]) + 1
-      }
-      else{
-        endTmInit = Number(endTm.split(":")[0]) 
-      }
-      this.setState({value:[bgnTmInit,endTmInit]})
+  state = { value: [0, 24] };
+  componentDidMount() {
+    const { times } = this.props
+    const { bgnTm, endTm } = times.toJS()
+    let bgnTmInit = Number(bgnTm.split(":")[0])
+    let endTmInit = 24
+    if (endTm === "23:59:59") {
+      endTmInit = Number(endTm.split(":")[0]) + 1
     }
-  
-  
+    else {
+      endTmInit = Number(endTm.split(":")[0])
+    }
+    this.setState({ value: [bgnTmInit, endTmInit] })
+  }
+
+
   handleChange = async (event: any, newValue: number | number[]) => {
-    await this.setState({value: newValue as number[]});
+    await this.setState({ value: newValue as number[] });
     const { value } = this.state
     const { SearchActions } = this.props
     const bgnTm = this.valueToText(value[0])
     const endTm = this.valueToText(value[1])
-    SearchActions.changeTime({time: 'bgnTm', value:bgnTm})
-    SearchActions.changeTime({time: 'endTm', value:endTm})
+    SearchActions.changeTime({ time: 'bgnTm', value: bgnTm })
+    SearchActions.changeTime({ time: 'endTm', value: endTm })
   }
   valueToText = (value: number) => {
-    if (-1 < value && value < 10){
-    return `0${value}:00:00`;
+    if (-1 < value && value < 10) {
+      return `0${value}:00:00`;
     }
-    else if(value=== 24){
+    else if (value === 24) {
       return `23:59:59`;
     }
-    else{
+    else {
       return `${value}:00:00`;
     }
   }
   valuetext(value: number) {
-    if (value < 12){
+    if (value < 12) {
       return `오전 ${value}시`;
     }
-    else{
+    else {
       const newVal = value - 12
       return `오후 ${newVal}시`;
     }
   }
-  render(){
+  render() {
     const { value } = this.state
     const { handleChange } = this
-  return (
-    <Fragment >
-    <div id="time-bar" style={{ marginTop: 25 }}>
-      <IOSSlider value={value}
-        min={0}
-        max={24}
-        onChange={handleChange}
-        defaultValue={[0, 24]}
-        marks={marks}
-        aria-labelledby="non-linear-slider"
-        valueLabelDisplay="on"
-        getAriaValueText={this.valuetext}
-        valueLabelFormat={this.valuetext} />
-     </div>
-    </Fragment>
-  );
-}
+    return (
+      <Fragment >
+        <div id="time-bar" style={{ marginTop: 25 }}>
+          <IOSSlider value={value}
+            min={0}
+            max={24}
+            onChange={handleChange}
+            defaultValue={[0, 24]}
+            marks={marks}
+            aria-labelledby="non-linear-slider"
+            valueLabelDisplay="on"
+            getAriaValueText={this.valuetext}
+            valueLabelFormat={this.valuetext} />
+        </div>
+      </Fragment>
+    );
+  }
 }
 export default connect(
-    ({ search }: any) => ({
-      times:search.get('times')
-    }),
-    dispatch => ({
-        SearchActions: bindActionCreators(searchActions, dispatch)
-    })
+  ({ search }: any) => ({
+    times: search.get('times')
+  }),
+  dispatch => ({
+    SearchActions: bindActionCreators(searchActions, dispatch)
+  })
 )(TimeContainer);
 

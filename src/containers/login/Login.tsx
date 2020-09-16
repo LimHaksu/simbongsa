@@ -11,8 +11,6 @@ import locationAllList from "lib/json/temp.json";
 import categoryAllList from "lib/json/searchCategory.json";
 import "./Login.css";
 
-// import KakaoLogin from "components/user/snsLogin/Kakao";
-// import GoogleLogin from "components/user/snsLogin/Google";
 import GoogleLogin from "react-google-login";
 
 // 직접 제작한 Components
@@ -70,8 +68,7 @@ class Login extends React.Component<any, any> {
     if (this.isLogedIn()) {
       this.props.history.push('/mainpage')
     }
-    const { SearchActions, AuthActions, UserActions } = this.props;
-    // const { id_token } = this.props.match.params;
+    const { AuthActions, UserActions } = this.props;
     // 구글 로그인을 하고 성공했을 경우 url로 구글 id_token이 같이 넘어옴. 이를 사용하여 로그인 처리를 함
     const hash = window.location.hash;
     if (hash.length > 0) {
@@ -360,7 +357,6 @@ class Login extends React.Component<any, any> {
     const { email, password } = this.props.form.toJS(); // form 에서 email 과 password 값을 읽어옴
     const { handleChange, handleLocalLogin, handleGoogleLogin } = this;
     const error = this.props.error.toJS();
-    // const pagesNumbers = this.getPagesNumbers();
     return (
       <Container>
         <Grid
@@ -369,13 +365,10 @@ class Login extends React.Component<any, any> {
           verticalAlign="middle"
         >
           <Grid.Column style={{ maxWidth: 450 }}>
-            {/* <Header as="h2" color="orange" textAlign="center"> */}
             <Image centered size="tiny" src={logo1} />
-            {/* </Header> */}
             <Form size="large">
               <Segment stacked>
                 <AuthError error={error.auth} />
-                {/* <AuthError error={error.email} /> */}
                 <Form.Input
                   fluid
                   icon="user"
@@ -427,15 +420,14 @@ class Login extends React.Component<any, any> {
               <div>
                 <span className="message">비밀번호를 잊으셨나요?</span>
                 <Link to="/findpassword">
-                  <a className="link">비밀번호 찾기</a>
+                  <div className="link">비밀번호 찾기</div>
                 </Link>
                 <br />
               </div>
               <div>
                 <span className="message">아직 심봉사의 회원이 아니세요?</span>
-                {/* <LinkButton placeholder="회원가입" link="/join" /> */}
                 <Link to="/join">
-                  <a className="link">회원가입</a>
+                  <div className="link">회원가입</div>
                 </Link>
               </div>
             </div>

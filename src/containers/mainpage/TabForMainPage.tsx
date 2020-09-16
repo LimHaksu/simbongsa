@@ -12,10 +12,6 @@ interface Props {
   PageActions: any;
   currentTab: any; //pageActions.VolTab;
 }
-interface State {
-
-}
-
 
 const panes = [
   {
@@ -55,7 +51,7 @@ const panes = [
   }
 ];
 
-class TabForMainPage extends Component<Props, State> {
+class TabForMainPage extends Component<Props> {
   state = { activeIndex: 0 }
   componentDidMount() {
     const { currentTab } = this.props;

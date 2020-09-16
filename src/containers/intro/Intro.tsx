@@ -7,21 +7,20 @@ import './Intro.css'
 interface Props {
   loginCheck: boolean;
 }
-interface State { }
-class Intro extends Component<Props & any, State> {
+class Intro extends Component<Props> {
   scrollBottom() {
     window.scrollTo(0, window.innerHeight)
   }
   render() {
     const { loginCheck } = this.props;
     return (
-        <Container>
-          <ListUp />
-          {!loginCheck &&
-            <div className="loginbutton" >
-              <Link to="/login" ><Button as="a" className="loginbutton">시작하기</Button></Link>
-            </div>}
-        </Container>
+      <Container>
+        <ListUp />
+        {!loginCheck &&
+          <div className="loginbutton" >
+            <Link to="/login" ><Button as="a" className="loginbutton">시작하기</Button></Link>
+          </div>}
+      </Container>
     );
   }
 }

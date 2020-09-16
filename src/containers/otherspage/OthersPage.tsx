@@ -39,7 +39,7 @@ class Mypage extends Component<Props, State> {
 }
 
 export default connect(
-  ({ user }: any) => ({
+  () => ({
   }),
   dispatch => ({
     VolActions: bindActionCreators(volActions, dispatch)

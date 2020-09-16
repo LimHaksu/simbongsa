@@ -4,16 +4,12 @@ import { bindActionCreators } from "redux";
 import * as searchActions from "redux/modules/search";
 import { Checkbox } from 'semantic-ui-react'
 import './AgeContainer.css'
+
 interface Props {
     ages: any
     SearchActions: any
-
-
 }
-interface State { }
-class AgeContainer extends Component<Props, State> {
-    state = {};
-
+class AgeContainer extends Component<Props> {
     handleToggle = (first: string, second: string) => {
         const { SearchActions } = this.props;
 

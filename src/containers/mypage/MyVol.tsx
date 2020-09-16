@@ -25,20 +25,16 @@ class MyVol extends Component<Props, State> {
     }
   }
 
-  appendList = () => {
-  };
-
   render() {
-    const { appendList } = this;
     const { volListByUserId } = this.props;
     return <div>
-      <VolList appendList={appendList} height={"300px"} loadingMessage="봉사 리스트를 불러오는 중" volunteers={volListByUserId.toJS()} />
+      <VolList height={"300px"} loadingMessage="봉사 리스트를 불러오는 중" volunteers={volListByUserId.toJS()} />
     </div>;
   }
 }
 
 export default connect(
-  ({ user, posting, vol }: any) => ({
+  ({ vol }: any) => ({
     volListByUserId: vol.get("volListByUserId")
   }),
   dispatch => ({

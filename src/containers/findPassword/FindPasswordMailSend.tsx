@@ -1,22 +1,17 @@
 import React from "react";
-import { RouteComponentProps } from '@reach/router';
 import { Link } from "react-router-dom";
 import { Container, Button } from "semantic-ui-react";
 
-interface IProps {
+interface Props {
   location: {
     state: {
       email: "string";
     };
   };
 }
-interface IState { }
 
 class FindPasswordMailSend extends React.Component<
-  IProps,
-  IState,
-  RouteComponentProps
-  > {
+  Props> {
   state = {
     email: null
   };

@@ -17,7 +17,7 @@ import locationAllList from "lib/json/temp.json";
 import categoryAllList from "lib/json/searchCategory.json";
 
 import * as volActions from 'redux/modules/vol';
-interface IProps {
+interface Props {
   UserActions: any
   VolActions: any
   SearchActions: any
@@ -29,12 +29,12 @@ interface IProps {
   times: any
   loading: boolean
 }
-class App extends Component<IProps> {
+class App extends Component<Props> {
   initializeUserInfo = async () => {
     const token = storage.get("token"); // 로그인 정보를 로컬스토리지에서 가져옵니다.
     if (!token) return; // 로그인 정보가 없다면 여기서 멈춥니다.
     const temp = jwt.decode(token);
-    const { UserActions, loading } = this.props;
+    const { UserActions } = this.props;
 
     await UserActions.setLoggedInfo(temp);
 
@@ -69,8 +69,8 @@ class App extends Component<IProps> {
     const { bgnTm, endTm } = times.toJS()
 
 
-    VolActions.getVolList({ input: input, firstLocation: firstLocation, secondLocation: secondLocation, thirdLocation: thirdLocation, firstCategory: firstCategory, secondCategory: secondCategory, thirdCategory: thirdCategory, bgnTm: bgnTm, endTm: endTm })
-    VolActions.getInitailList({ input: input, firstLocation: firstLocation, secondLocation: secondLocation, thirdLocation: thirdLocation, firstCategory: firstCategory, secondCategory: secondCategory, thirdCategory: thirdCategory, bgnTm: bgnTm, endTm: endTm, pageNum: 1 })
+    VolActions.getVolList({ input, firstLocation, secondLocation, thirdLocation, firstCategory, secondCategory, thirdCategory, bgnTm, endTm })
+    VolActions.getInitailList({ input, firstLocation, secondLocation, thirdLocation, firstCategory, secondCategory, thirdCategory, bgnTm, endTm, pageNum: 1 })
   }
   initializePreferInfo = (preferInfo: any) => {
     const { SearchActions } = this.props;
@@ -197,25 +197,7 @@ class App extends Component<IProps> {
     const { UserActions } = this.props;
     UserActions.setPreferInfo(userId);
   };
-  // shouldComponentUpdate(nextProps: any) {
-  //   const { userId } = this.props;
-  //   console.log("tihs.props", this.props);
-  //   console.log("nextProps", nextProps);
-  //   const userId2 = nextProps.userId;
-  //   console.log("userid의 변화", userId, userId2);
-  //   if (userId !== userId2) {
-  //     this.initialLoad(userId2);
-  //   }
-  //   const { preferInfo } = this.props;
-  //   const preferInfo2 = nextProps.preferInfo;
-  //   if (userId === userId2) {
-  //     console.log("preferInfo의 변화", preferInfo, preferInfo2);
-  //     if (preferInfo !== preferInfo2) {
-  //       this.initializePreferInfo(preferInfo2);
-  //     }
-  //   }
-  //   return userId === userId2 && preferInfo === preferInfo2;
-  // }
+
   constructor(props: any) {
     super(props);
     this.initializeUserInfo();

@@ -10,12 +10,10 @@ import * as userActions from "redux/modules/user";
 import storage from "lib/storage";
 import logo2 from 'assets/images/logo2.png';
 
-interface Props { }
-
-interface IState {
+interface State {
   activeItem: string;
 }
-export interface IAppProps {
+export interface Props {
   loginCheck: boolean;
   history: any;
   PageActions: any;
@@ -25,8 +23,8 @@ export interface IAppProps {
 }
 
 class HeaderForDesktop extends React.Component<
-  IAppProps,
-  IState
+  Props,
+  State
   > {
   state = { activeItem: "" };
   handleLogout = async () => {
@@ -69,7 +67,6 @@ class HeaderForDesktop extends React.Component<
             pointing
             secondary
             style={{ backgroundColor: "white" }}
-          // size='large'
           >
             <Container>
               <Menu.Item position="left"></Menu.Item>
@@ -132,11 +129,9 @@ class HeaderForDesktop extends React.Component<
                       </Link>
                           </Dropdown.Item>
                         </div>)}
-
                   </Dropdown.Menu>
                 </Dropdown>
               </Menu.Item>
-
               <Menu.Item position="right"></Menu.Item>
             </Container>
           </Menu>

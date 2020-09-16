@@ -17,7 +17,7 @@ export default function Input({
   type,
   onEnter,
   nametag
-}: Props): ReactElement {
+}: Props) {
   return (
     <Form>
       <Form.Field>

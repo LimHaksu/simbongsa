@@ -5,7 +5,7 @@ import * as volActions from "redux/modules/vol";
 import * as userActions from "redux/modules/user";
 import { bindActionCreators } from "redux";
 import InfiniteScroll from "react-infinite-scroll-component";
-// import PostCard from "components/posting/PostCard";
+import PostCard from "components/posting/PostCard";
 import { Container } from 'semantic-ui-react'
 
 interface Props {
@@ -26,8 +26,6 @@ interface State {
 class Feed extends Component<Props, State> {
   state = {
     pageNum: 1,
-    // width: window.innerWidth,
-    // height: window.innerHeight - 345
     flag: false,
     isGetFeedListComplete: false
   };
@@ -56,7 +54,7 @@ class Feed extends Component<Props, State> {
     })
   }
 
-  shouldComponentUpdate(nextProps: any, nextState: any) {
+  shouldComponentUpdate(nextProps: Props, nextState: State) {
     if (nextState.isGetFeedListComplete) {
       this.setState({ isGetFeedListComplete: false })
       return true;
@@ -95,18 +93,15 @@ class Feed extends Component<Props, State> {
     let idxN = 0;
     let pLength = preferFeedList.length;
     let nLength = normalFeedList.length;
-    // const size = s1 + s2;
     let postingList: any[] = [];
-    // preferFeedList.map((feed: any, i: any) => {
-    //   return <Card post={feed} key={i} />;
-    // });
+    console.log('hihi');
     while (idxP < pLength || idxN < nLength) {
       for (let i = 0; i < 8; ++i) {
         // 8개 넣기, 그 전에 바닥나면 안넣음
         if (idxP === pLength) {
           break;
         }
-        // postingList.push(<PostCard color="white" post={preferFeedList[idxP]} key={idx} setFlag={this.setFlag} />);
+        postingList.push(<PostCard color="white" post={preferFeedList[idxP]} key={idx} setFlag={this.setFlag} />);
         idx += 1;
         idxP += 1;
       }
@@ -115,7 +110,7 @@ class Feed extends Component<Props, State> {
           break;
         }
         postingList.push(
-          // <PostCard color="#ffc164" post={normalFeedList[idxN]} key={idx} setFlag={this.setFlag} />
+          <PostCard color="#ffc164" post={normalFeedList[idxN]} key={idx} setFlag={this.setFlag} />
         );
         idx += 1;
         idxN += 1;
@@ -141,7 +136,6 @@ export default connect(
   (state: any) => ({
     preferFeedList: state.user.get("preferFeedList"),
     normalFeedList: state.user.get("normalFeedList")
-    // mId: state.user.getIn(["loggedInfo", "mId"])
   }),
   dispatch => ({
     VolActions: bindActionCreators(volActions, dispatch),

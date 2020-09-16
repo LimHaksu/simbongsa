@@ -7,11 +7,8 @@ import * as authActions from "redux/modules/auth";
 import * as pageActions from 'redux/modules/page';
 import * as volActions from "redux/modules/vol";
 import * as userActions from "redux/modules/user";
-// import "assets/mycss";
 import './Footer.css'
-interface Props { }
 
-// export default function Header({ }: Props): ReactElement {
 class Footer extends React.Component<any, any>{
   state = { activeItem: "" }
 
@@ -43,10 +40,10 @@ class Footer extends React.Component<any, any>{
         {/* 작은 화면에서 보여줌 */}
         {loginCheck &&
           <Responsive
-          minWidth={Responsive.onlyMobile.minWidth} maxWidth={1000}
+            minWidth={Responsive.onlyMobile.minWidth} maxWidth={1000}
           >
             <Menu
-              borderless widths={3} fixed="bottom" style={{width:"100vw"}}
+              borderless widths={3} fixed="bottom" style={{ width: "100vw" }}
             >
               <Menu.Item name="HOME" active={activeItem === 'HOME'} onClick={this.handleItemClick}>
                 HOME</Menu.Item>

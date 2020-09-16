@@ -13,10 +13,8 @@ interface Props {
   VolActions: any;
   userId: string;
 }
-interface State {
-}
 
-class Mypage extends Component<Props, State> {
+class Mypage extends Component<Props> {
   componentDidMount() {
     window.scrollTo(0, 0);
     const { VolActions, userId } = this.props;
@@ -26,11 +24,11 @@ class Mypage extends Component<Props, State> {
   render() {
     const { userId } = this.props;
     return (
-      <div id="tab" style={{width:"100vw"}}>
+      <div id="tab" style={{ width: "100vw" }}>
         <Container>
           <UserProfile profileUserId={userId} />
         </Container>
-          <TabforMypage userId={userId} />
+        <TabforMypage userId={userId} />
       </div>
     );
   }

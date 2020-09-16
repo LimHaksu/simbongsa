@@ -24,10 +24,10 @@ class FieldEditor extends React.Component<FProps> {
     );
   }
 }
-interface FEProps {
+interface Props {
   fields: any;
 }
-class FormEditor extends React.Component<FEProps> {
+class FormEditor extends React.Component<Props> {
   constructor(props: any) {
     super(props);
     this.state = {};
@@ -53,7 +53,6 @@ class FormEditor extends React.Component<FEProps> {
     );
   }
 }
-// Convert to class component and add abillity to dynamically add/remove fields by having it in state
 const App = () => {
   const fields = ["field1", "field2", "anotherField"];
   return <FormEditor fields={fields} />;

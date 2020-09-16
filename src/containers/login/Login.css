@@ -22,7 +22,7 @@ span.message {
     align-self: start;
     color: rgb(112, 112, 112);
 }
-a.link {
+div.link {
     text-decoration: none;
     color: rgba(255, 136, 0, 0.897);
     font-weight: bold;

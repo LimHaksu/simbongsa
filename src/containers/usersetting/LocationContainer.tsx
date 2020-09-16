@@ -11,9 +11,7 @@ interface Props {
   input: any;
   key: any;
 }
-interface State { }
-class Locationcontainer extends Component<Props, State> {
-  state = {};
+class Locationcontainer extends Component<Props> {
   handleChange = (e: any, data: any) => {
     const { SearchActions, locations } = this.props;
     const splitValue = data.value.split('/')
@@ -73,7 +71,6 @@ class Locationcontainer extends Component<Props, State> {
 
 
     return (
-
       <Fragment>
         <div style={{ "margin": 1 }} >
           <Dropdown

@@ -16,31 +16,17 @@ interface State {
 
 //constructor -> render -> componentDidMount -> render
 class Location extends Component<Props, State> {
-  // state = { width: window.innerWidth, height: window.innerHeight - 345 };
-  // componentDidMount() {
-  // window.addEventListener("resize", this.updateDimensions);
-  // }
-  // updateDimensions = () => {
-  //   this.setState({
-  //     // width: window.innerWidth,
-  //     // height: window.innerHeight - 345
-  //   });
-  // };
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.updateDimensions);
-  // }
   render() {
     return (
       <div >
         <Map />
-        {/* <VolInfo /> */}
       </div>
     );
   }
 }
 
 export default connect(
-  ({ vol, user }: any) => ({
+  ({ vol }: any) => ({
     showVolInfo: vol.get('showVolInfo'),
   }),
   dispatch => ({

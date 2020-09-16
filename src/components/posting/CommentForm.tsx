@@ -1,6 +1,4 @@
 import React from 'react';
-import storage from "lib/storage";
-
 import { connect } from "react-redux";
 
 import './CommentForm.css'
@@ -9,7 +7,7 @@ import { Input, Button } from 'semantic-ui-react'
 
 interface Props {
     "inP_id": number;
-    handleUpdateFlag : Function;
+    handleUpdateFlag: Function;
 }
 
 class CommentForm extends React.Component<Props & any, {}> {
@@ -38,11 +36,9 @@ class CommentForm extends React.Component<Props & any, {}> {
                 })
                 this.props.handleUpdateFlag(true);
             });
-        // window.location.reload(true);
     }
 
     render() {
-
         return (
             <div>
                 <Input

@@ -25,13 +25,11 @@ class Profile extends Component<Props, State> {
   componentDidMount() {
     const { userId, UserActions } = this.props;
     UserActions.setUserProfileImage(userId);
-    // let data = UsergApi.getUserInfo(userId);
   }
   componentWillUnmount() {
     this.setState({ isSubmit: false, isDelete: false })
   }
   handleFileSelect = (e: any) => {
-    var id = e.target.id;
     var value = e.target.files[0];
     if (value) {
       this.setState({ selectedFiles: [value], preview: URL.createObjectURL(value) });
@@ -47,12 +45,10 @@ class Profile extends Component<Props, State> {
     if (selectedFiles.length > 0) {
       file.append("file", selectedFiles[0]);
     }
-    let data = await PostingApi.uploadProfileImage(mId, file);
+    await PostingApi.uploadProfileImage(mId, file);
     this.setState({ isSubmit: true, isDelete: false }, () => {
       UserActions.setUserProfileImage(userId);
     })
-    // this.props.history.push(`/${v_id}/postinglist`);
-    // this.goListPage();
   };
 
   handleDelete = async (e: any) => {

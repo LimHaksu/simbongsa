@@ -46,23 +46,21 @@ export default class PieGraph extends Component<Props, State> {
     updateFlag: false
   };
 
-  shouldComponentUpdate(nextProps: any) {
-    const { updateFlag } = this.state;
-    if (updateFlag || this.state.data.datasets[0].data.length === 0) {
+  shouldComponentUpdate() {
+    const { updateFlag, data: stateData } = this.state;
+    const { data: propsData, labels } = this.props;
+    if (updateFlag || stateData.datasets[0].data.length === 0) {
       this.setState({ updateFlag: false },
         () => {
-          const propsData = this.props.data;
           const { generateBackgroundColor } = this;
-          const { data } = this.state;
-          const { labels } = this.props;
           const len = propsData.length;
           this.setState({
             data: {
-              ...data,
+              ...stateData,
               labels: labels,
               datasets: [
                 {
-                  ...data.datasets[0],
+                  ...stateData.datasets[0],
                   data: propsData,
                   backgroundColor: generateBackgroundColor(len)
                 }
@@ -71,7 +69,7 @@ export default class PieGraph extends Component<Props, State> {
           });
         })
     }
-    return this.state.data.datasets[0].data.length > 0;
+    return stateData.datasets[0].data.length > 0;
   }
 
   generateBackgroundColor = (numberOfItems: number): string[] => {

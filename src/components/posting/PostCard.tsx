@@ -15,7 +15,7 @@ interface Props {
         m_id: 0;
         p_status: string;
         userId: "";
-        files: [];
+        files: any[];
     };
     color: string;
     user: any;
@@ -50,13 +50,12 @@ class PostCard extends Component<Props> {
         let id = this.props.post.p_id;
         PostingApi.getPosts(id)
             .then((res: any) => {
-                const resData = res.data.data;
-                let temp = []
-                if (resData.post_vote_members.length > 0) {
-                    for (let i = 0; i < resData.post_vote_members.length; i++) {
-                        temp.push(resData.post_vote_members[i].m_id.toString())
-                    }
-                }
+                const { data: resData } = res.data;
+                const { post_vote_members } = resData;
+                let temp: string[] = [];
+                post_vote_members.forEach((member: any) => {
+                    temp.push(member.m_id.toString());
+                })
                 this.setState({
                     post: {
                         p_content: resData.p_content,
@@ -92,7 +91,6 @@ class PostCard extends Component<Props> {
     handleDelete(id: number) {
         PostingApi.deletePost(id)
             .then((res: any) => {
-                // console.log(res)
                 this.props.setFlag(true);
             })
             .catch((err: any) => console.log(err))
@@ -110,7 +108,6 @@ class PostCard extends Component<Props> {
             this.setState({ result: false })
         }
         return (
-
             <Card>
                 <Card.Content style={{ backgroundColor: color }}>
                     <Card.Header>
@@ -120,7 +117,6 @@ class PostCard extends Component<Props> {
                         {m_id === this.props.post.m_id &&
                             <span style={{ float: 'right', right: "50px", position: 'relative', zIndex: 10 }}>
                                 <Icon name="x" onClick={this.show} />
-                                {/* <span>글 삭제</span> */}
                             </span>}
                         <UserProfile profileSize="mini" profileUserId={this.props.post.userId} />
                     </Card.Header>
@@ -133,7 +129,6 @@ class PostCard extends Component<Props> {
                         onConfirm={this.handleConfirm}
                         size='tiny'
                     />
-
                 </Card.Content>
                 <Card.Content extra>
                     <PostDetail

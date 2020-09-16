@@ -8,7 +8,7 @@ import * as userActions from "redux/modules/user";
 
 import { Icon, Container } from 'semantic-ui-react'
 
-interface Iprops {
+interface Props {
   location: {
     state: {
       email: "string";
@@ -17,7 +17,7 @@ interface Iprops {
   form: any;
 }
 
-class JoinComplete extends React.Component<Iprops, any> {
+class JoinComplete extends React.Component<Props, any> {
   render() {
     const { email } = this.props.form.toJS();
     return (

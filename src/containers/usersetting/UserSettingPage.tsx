@@ -17,7 +17,6 @@ export default class UserSettingPage extends Component<Props, State> {
   };
 
   render() {
-    const { image, activeItem } = this.state;
     return <Container style={{ width: "600px" }}><UserSettingTab /></Container>;
   }
 }

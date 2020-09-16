@@ -6,7 +6,7 @@ import { bindActionCreators } from "redux";
 import * as userActions from "redux/modules/user";
 import * as volActions from "redux/modules/vol";
 import * as searchActions from "redux/modules/search";
-interface Iprops {
+interface Props {
     input: string
     SearchActions: any
     VolActions: any
@@ -18,10 +18,10 @@ interface Iprops {
     times: any
     ages: any
 }
-interface Istate {
+interface State {
     error: string
 }
-class SearchBar extends React.Component<Iprops, Istate> {
+class SearchBar extends React.Component<Props, State> {
     state = {
         error: "",
     }
@@ -34,7 +34,7 @@ class SearchBar extends React.Component<Iprops, Istate> {
 
     }
 
-    updateTerm = (event: any) => {
+    updateTerm = (event: Event & { target: { value: string } }) => {
         const { SearchActions } = this.props
         const { target: { value } } = event
         SearchActions.changeInput({ input: value, key: "" })

@@ -1,63 +1,59 @@
 import axios, { AxiosResponse } from "axios";
 import storage from "lib/storage";
 import jwt from "jsonwebtoken";
+import getHeaders from './getHeaders';
 
 const restBaseApi = process.env.REACT_APP_REST_BASE_API!;
 
 /// 팔로우 관련 API 시작
 export const getUserFollower = (userId: string) => {
-  const token = "Bearer " + storage.get("token");
-  try{
+  const headers = getHeaders();
+  try {
     return axios.get(
-      restBaseApi + "/follow/" + userId + "/followers",
-      { headers: { Authorization: token } }
+      restBaseApi + "/follow/" + userId + "/followers", { headers }
     );
-  }catch(error){
+  } catch (error) {
     return error;
   }
 };
 
 export const getUserFollowing = (userId: string) => {
-  const token = "Bearer " + storage.get("token");
-  try{
+  const headers = getHeaders();
+  try {
     return axios.get(
-      restBaseApi + "/follow/" + userId + "/followees",
-      { headers: { Authorization: token } }
-    );
-  }catch(error){
+      restBaseApi + "/follow/" + userId + "/followees", { headers });
+  } catch (error) {
     return error;
   }
 };
 
 export const checkFollow = (followerId: string, followeeId: string) => {
-  const token = "Bearer " + storage.get("token");
-  try{
+  const headers = getHeaders();
+  try {
     return axios.get(
       restBaseApi + "/isfollowing?follower_userid=" +
-    followerId +
-    "&followee_userid=" +
-    followeeId,
-      { headers: { Authorization: token } }
+      followerId +
+      "&followee_userid=" +
+      followeeId,
+      { headers }
     );
-  }catch(error){
+  } catch (error) {
     return error;
   }
 };
 
-export const followUser =  (
+export const followUser = (
   follower_userid: string,
   followee_userid: string
 ) => {
-  const token = "Bearer " + storage.get("token");
-  const data = { 
+  const headers = getHeaders();
+  const data = {
     "followee_userid": followee_userid,
-  "follower_userid": follower_userid
-}
-  try{
-    return axios.post(restBaseApi + "/insertfollow/", data, {
-      headers: { Authorization: token }
-    });
-  }catch(error){
+    "follower_userid": follower_userid
+  }
+  try {
+    return axios.post(restBaseApi + "/insertfollow/", data, { headers });
+  } catch (error) {
     return error;
   }
 };
@@ -66,16 +62,14 @@ export const unfollowUser = (
   follower_userid: string,
   followee_userid: string
 ) => {
-  const token = "Bearer " + storage.get("token");
-  const data = { 
+  const headers = getHeaders();
+  const data = {
     "followee_userid": followee_userid,
-  "follower_userid": follower_userid
-}
-  try{
-    return axios.post(restBaseApi + "/deletefollow/", data, {
-      headers: { Authorization: token }
-    });
-  }catch(error){
+    "follower_userid": follower_userid
+  }
+  try {
+    return axios.post(restBaseApi + "/deletefollow/", data, { headers });
+  } catch (error) {
     return error;
   }
 };
@@ -113,20 +107,12 @@ export const localPreferRegister: ({
     };
 
     try {
-      const token = "Bearer " + storage.get("token");
-      return axios.patch(restBaseApi + `/rest/Member/${userId}`, data, {
-        headers: { Authorization: token }
-      });
+      const headers = getHeaders();
+      return axios.patch(restBaseApi + `/rest/Member/${userId}`, data, { headers });
     } catch (error) {
       console.log(error);
       return error;
     }
-    // try {
-    //   return axios.post(restBaseApi + "Member", data);
-    // } catch (error) {
-    //   console.log(error);
-    //   return true;
-    // }
   };
 
 export const localPreferInfo = (userId: string) => {
@@ -134,10 +120,8 @@ export const localPreferInfo = (userId: string) => {
     const tokenTemp = storage.get("token");
     const temp: any = jwt.decode(tokenTemp);
     const userId2 = temp.iss;
-    const token = "Bearer " + storage.get("token");
-    return axios.get(restBaseApi + `/rest/Member/${userId2}/PreferDetail`, {
-      headers: { Authorization: token }
-    });
+    const headers = getHeaders();
+    return axios.get(restBaseApi + `/rest/Member/${userId2}/PreferDetail`, { headers });
   } catch (error) {
     console.log(error);
     return false;
@@ -149,11 +133,8 @@ export const getPreferFeedList = (mId: string, pgNum: number) => {
     const tokenTemp = storage.get("token");
     const temp: any = jwt.decode(tokenTemp);
     const mId2 = temp.aud;
-    const token = "Bearer " + storage.get("token");
-    // return axios.get(restBaseApi + `rest/PostFeed/3/10/${pgNum}`, {
-    return axios.get(restBaseApi + `/rest/PostFeed/${mId2}/8/${pgNum}`, {
-      headers: { Authorization: token }
-    });
+    const headers = getHeaders();
+    return axios.get(restBaseApi + `/rest/PostFeed/${mId2}/8/${pgNum}`, { headers });
   } catch (error) {
     console.log(error);
     return true;
@@ -165,11 +146,8 @@ export const getNormalFeedList = (mId: string, pgNum: number) => {
     const tokenTemp = storage.get("token");
     const temp: any = jwt.decode(tokenTemp);
     const mId2 = temp.aud;
-    const token = "Bearer " + storage.get("token");
-    // return axios.get(restBaseApi + `rest/PostFeed/3/10/${pgNum}`, {
-    return axios.get(restBaseApi + `/rest/PostFeed2/${mId2}/2/${pgNum}`, {
-      headers: { Authorization: token }
-    });
+    const headers = getHeaders();
+    return axios.get(restBaseApi + `/rest/PostFeed2/${mId2}/2/${pgNum}`, { headers });
   } catch (error) {
     console.log(error);
     return true;
@@ -178,21 +156,16 @@ export const getNormalFeedList = (mId: string, pgNum: number) => {
 
 export const changePassword = async (eMail: string, password: string) => {
   let data = { m_email: eMail, m_password: password };
-  const token = "Bearer " + storage.get("token");
-  let response = await axios.post(restBaseApi + "/rest/Member/Password", data, {
-    headers: { Authorization: token }
-  });
-  // response 안에서 데이터 추출하기.
+  const headers = getHeaders();
+  let response = await axios.post(restBaseApi + "/rest/Member/Password", data, { headers });
   return response;
 };
 
 export const getUserInfo = (userId: string) => {
-  const token = "Bearer " + storage.get("token");
-  try{
-    return axios.get(`${restBaseApi}/rest/Member/${userId}`, {
-      headers: { Authorization: token }
-    });
-  }catch(error){
+  const headers = getHeaders();
+  try {
+    return axios.get(`${restBaseApi}/rest/Member/${userId}`, { headers });
+  } catch (error) {
     return error;
   }
 };
@@ -203,10 +176,8 @@ export const deleteUser = async (
   m_id: string
 ) => {
   try {
-    const token = "Bearer " + storage.get("token");
-    return axios.delete(restBaseApi + `/rest/Member/${m_id}`, {
-      headers: { Authorization: token }
-    });
+    const headers = getHeaders();
+    return axios.delete(restBaseApi + `/rest/Member/${m_id}`, { headers });
   } catch (error) {
     console.log(error);
     return true;

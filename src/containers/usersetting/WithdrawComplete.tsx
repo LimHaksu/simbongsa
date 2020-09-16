@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 export default class WithdrawComplete extends Component {
-    state = {}
     componentDidMount() {
         setTimeout(function () {
             window.location.href = process.env.REACT_APP_FRONT_URI!;

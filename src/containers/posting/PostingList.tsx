@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-// import PostCard from 'components/posting/PostCard'
+import PostCard from 'components/posting/PostCard'
 import './PostingList.css'
 import * as VolApi from 'lib/api/VolApi'
 import { Container } from 'semantic-ui-react'
@@ -76,7 +76,7 @@ class PostingList extends Component<any, any> {
   render() {
     const { posts } = this.state;
     var postingList = posts.map((post: any, i: any) => {
-      // return <PostCard color="white" post={post} key={i} setFlag={this.setFlag} />;
+      return <PostCard color="white" post={post} key={i} setFlag={this.setFlag} />;
     });
     return (
       <Container>

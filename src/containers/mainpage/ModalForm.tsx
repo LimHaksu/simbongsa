@@ -7,12 +7,12 @@ import * as userActions from "redux/modules/user";
 import * as volActions from "redux/modules/vol";
 import * as searchActions from "redux/modules/search";
 import './ModalForm.scss'
-interface IState {
+interface State {
     open: boolean
     active: boolean
 }
 
-class ModalExampleDimmer extends Component<any, IState> {
+class ModalExampleDimmer extends Component<any, State> {
     state = { open: false, active: true }
     componentDidUpdate(prevProps: any, prevState: any) { // 이전 props, state에 대한 정보
         if (this.props.locations !== prevProps.locations) {
@@ -26,7 +26,7 @@ class ModalExampleDimmer extends Component<any, IState> {
         }
     }
     isActive: any = () => {
-        const { locations, categorys, times } = this.props
+        const { locations, categorys } = this.props
         let preferLocate = locations.toJS().map((location: any) => location.text)
         if (preferLocate.length > 0) {
             this.setState({ active: true })

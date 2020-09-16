@@ -38,7 +38,7 @@ class VolInfo extends Component<Props, State> {
       });
     }
   }
-  shouldComponentUpdate(nextProps: any) {
+  shouldComponentUpdate(nextProps: Props) {
     const { volunteersForMap } = this.props;
     if (volunteersForMap !== nextProps.volunteersForMap) {
       let volunteers = nextProps.volunteersForMap.toJS();
@@ -83,7 +83,6 @@ class VolInfo extends Component<Props, State> {
     const { selectedVolunteer } = this.props;
     const { volunteersForList } = this.state;
     const { appendList } = this;
-    // if(selectedVolunteer !=)
     return (
       <div className="main--text" style={{}}>
         {!selectedVolunteer.v_id && volunteersForList.length === 0 && (
@@ -103,25 +102,6 @@ class VolInfo extends Component<Props, State> {
             를 눌러<br /> 자세한 정보를 알아보세요.
           </div>
         )}
-        {/* {selectedVolunteer.v_id && (
-          <div className="vol--info">
-            <div>봉사활동명 : {selectedVolunteer.v_title}</div>
-            <div>
-              봉사일정: {selectedVolunteer.v_pBgnD} ~{" "}
-              {selectedVolunteer.v_pEndD} / {selectedVolunteer.v_bgnTm} ~{" "}
-              {selectedVolunteer.v_endTm}
-            </div>
-            <div>봉사장소: {selectedVolunteer.v_location}</div>
-            <div>
-              모집정보: {selectedVolunteer.v_mBgnD} ~{" "}
-              {selectedVolunteer.v_mEndD}
-            </div>
-            <LinkButton
-              link={`vol/detail/${selectedVolunteer.v_id}`}
-              placeholder="상세보기"
-            />
-          </div>
-        )} */}
         {selectedVolunteer.v_id && (
           <VolList
             volunteers={[selectedVolunteer]}

@@ -4,7 +4,7 @@ import Input from "components/input/Input";
 import AuthError from "components/error/AuthError";
 import validator from 'validator';
 import ActionButton from "components/button/ActionButton";
-import { Container, Dimmer, Loader, Form, Segment, Button } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 
 interface Props {
   match: any;

@@ -1,7 +1,6 @@
 import React, { ReactElement } from "react";
 import { Link } from 'react-router-dom';
 import { Button } from "semantic-ui-react";
-// import "assets/mycss/";
 interface Props {
   placeholder: string;
   link: string;
@@ -14,7 +13,6 @@ interface Props {
 export default function LinkButton({
   link,
   placeholder,
-  disabled,
   inverted = false,
   width,
   height

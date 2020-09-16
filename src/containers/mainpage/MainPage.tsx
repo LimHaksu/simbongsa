@@ -3,9 +3,7 @@ import TabForMainPage from "containers/mainpage/TabForMainPage";
 import SearchBar from "components/search/SearchBar";
 import ModalForm from "./ModalForm";
 import "./MainPage.css";
-
 import {
-
   Container,
 } from "semantic-ui-react";
 import { connect } from "react-redux";
@@ -16,10 +14,9 @@ import * as volActions from "redux/modules/vol";
 import * as searchActions from "redux/modules/search";
 import jwt from "jsonwebtoken";
 import storage from "lib/storage";
-import { Search } from 'semantic-ui-react';
 
 
-interface Iprops {
+interface Props {
   loading: boolean;
   isRegister: boolean;
   SearchActions: any;
@@ -31,11 +28,10 @@ interface Iprops {
   lastInput: string;
   isSearchSubmit: boolean
 }
-class MainPage extends Component<Iprops> {
+class MainPage extends Component<Props> {
   async componentDidMount() {
 
     const { SearchActions, AuthActions, UserActions } = this.props;
-    // const { id_token } = this.props.match.params;
     const hash = window.location.hash;
     if (hash.length > 0) {
       const splitedHash = hash.split("id_token=");
@@ -59,7 +55,6 @@ class MainPage extends Component<Iprops> {
     const result = '"' + lastInput + '"' + ' 검색결과 입니다.'
 
     return (
-      //@ts-ignore
       <div id='tab' style={{ width: "100vw" }}>
         <Container text >
           <SearchBar />

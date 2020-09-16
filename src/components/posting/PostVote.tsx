@@ -3,14 +3,15 @@ import * as PostingApi from 'lib/api/PostingApi';
 import { connect } from 'react-redux';
 import { Label, Icon } from 'semantic-ui-react';
 
-interface IProps {
+interface Props {
     post_vote_members: Array<string>,
     p_id: number,
     vote_cnt: number,
+    user?: any
 }
 
-class PostVote extends React.Component<IProps & any, any> {
-    constructor(props: any) {
+class PostVote extends React.Component<Props, any> {
+    constructor(props: Props) {
         super(props)
         this.state = {
             post_vote_members: this.props.post_vote_members,
@@ -24,9 +25,6 @@ class PostVote extends React.Component<IProps & any, any> {
             m_id: m_id
         }
         PostingApi.insertPostVote(post_vote)
-            .then((res: any) => {
-                // console.log(res)
-            })
             .catch((err: any) => console.log(err))
         this.setState({ vote_cnt: this.state.vote_cnt + 1 })
     }
@@ -42,7 +40,6 @@ class PostVote extends React.Component<IProps & any, any> {
             >
                 <Icon name="hand paper" />함께 해요 {this.state.vote_cnt}
             </Label>
-
         )
     }
 }
@@ -51,5 +48,4 @@ export default connect(
     (state: any) => ({
         user: state.user.get("loggedInfo")
     }),
-
 )(PostVote);

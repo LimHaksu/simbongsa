@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import * as postingAction from "redux/modules/posting";
-
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import InfiniteScroll from "react-infinite-scroll-component";
-// import PostCard from 'components/posting/PostCard';
+import PostCard from 'components/posting/PostCard';
+
 interface Props {
   userId: string;
   PostingAction: any;
@@ -62,7 +62,7 @@ class MyPost extends Component<Props, State> {
   render() {
     const { postList } = this.props;
     const PrintArray = postList.map((post: any, i: any) => {
-      // return <PostCard color="white" post={post} key={i} setFlag={this.setFlag} />
+      return <PostCard color="white" post={post} key={i} setFlag={this.setFlag} />
     });
     return (
       <InfiniteScroll
@@ -80,7 +80,7 @@ class MyPost extends Component<Props, State> {
 }
 
 export default connect(
-  ({ user, posting, vol }: any) => ({
+  ({ posting }: any) => ({
     postList: posting.get("postsByUser").toJS()
   }),
   dispatch => ({

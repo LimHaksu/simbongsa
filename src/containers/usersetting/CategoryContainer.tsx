@@ -1,22 +1,19 @@
 import React, { Component, Fragment } from "react";
-import {
-    Dropdown, Icon
-} from "semantic-ui-react";
+import { Dropdown, Icon } from "semantic-ui-react";
 import "./CategoryContainer.css"
 import temp2 from "lib/json/temp2.json"
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as searchActions from "redux/modules/search";
 import { Button } from "semantic-ui-react"
+
 interface Props {
     categorys: any;
     SearchActions: any;
     input: any;
     key: any;
 }
-interface State { }
-class CategorySelection extends Component<Props, State> {
-    state = {};
+class CategorySelection extends Component<Props> {
     findKey = (options: any, value: any) => {
         const result = options.find((option: any) =>
             option.value === value
@@ -67,7 +64,7 @@ class CategorySelection extends Component<Props, State> {
             handleRemove,
             handleKeyDown
         } = this;
-        const { categorys, input, key } = this.props;
+        const { categorys, input } = this.props;
         const categoryItems = categorys.map((category: any) => {
             const { id, checked, text } = category;
             return (
@@ -80,14 +77,10 @@ class CategorySelection extends Component<Props, State> {
                 />
             );
         });
-
-
         return (
-
             <Fragment>
                 <div style={{ "margin": 1 }} >
                     <Dropdown
-                        // placeholder={placeholder}
                         value={input}
                         placeholder="봉사종류를 입력해주세요."
                         search
@@ -95,8 +88,7 @@ class CategorySelection extends Component<Props, State> {
                         onChange={handleChange}
                         options={temp2}
                         onKeyDown={handleKeyDown}
-                        style={{width:210}}
-                    // disabled={todos.size === 3}
+                        style={{ width: 210 }}
                     ></Dropdown>
                 </div>
                 {categoryItems}

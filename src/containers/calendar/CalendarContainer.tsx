@@ -24,9 +24,6 @@ class CalendarContainer extends React.Component<Props, any> {
     width: window.innerWidth,
     height: window.innerHeight - 345
   };
-  componentDidMount() {
-    //this.props.changeDate(moment().add(1, 'month'))
-  }
   loadMoreData = () => {
     this.setState({ pageNum: this.state.pageNum + 1 });
     const { VolActions } = this.props;

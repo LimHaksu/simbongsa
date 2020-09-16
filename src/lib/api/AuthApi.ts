@@ -42,12 +42,6 @@ export const localRegister: ({
     } catch (error) {
       return false;
     }
-    // try {
-    //   return axios.post(restBaseApi + "Member", data);
-    // } catch (error) {
-    //   console.log(error);
-    //   return true;
-    // }
   };
 
 export const sendSignupEmail = (email: string) => {

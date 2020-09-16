@@ -29,11 +29,11 @@ class FollowingList extends Component<Props, State> {
     )
   }
   getProfileList(list: string[]) {
-    return list.map((userId: string, i) => {
-      return <List.Item style={{ height: "70px" }} key={i}>
+    return list.map((userId: string, i) => (
+      <List.Item style={{ height: "70px" }} key={i}>
         <UserProfile profileSize="mini" profileUserId={userId} />
       </List.Item>
-    })
+    ))
   }
   componentDidUpdate() {
     const userId = this.props.match.params.id;
@@ -52,8 +52,6 @@ class FollowingList extends Component<Props, State> {
   render() {
     const { followingList } = this.state;
     const { getProfileList } = this;
-    // const followingList = userProfileMap.get(profileUserId).get('followingList');
-    // let followerList = [], followingList = [],  isProfileUserFollowedByLoginUser = false;
     const userId = this.props.match.params.id;
     return (
       <Container style={{ width: "100vw" }}>

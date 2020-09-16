@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { Label, Icon } from 'semantic-ui-react';
 import "./CertLabel.css";
 
-interface IProps {
+interface Props {
   v_pStatus: number;
   v_mBgnD: string;
   v_mEndD: string;
   volunteer: any;
 }
 
-export default class CertLabel extends Component<IProps & any, any> {
+export default class CertLabel extends Component<Props, any> {
   state = {
     visibility: "",
     isCert: "",

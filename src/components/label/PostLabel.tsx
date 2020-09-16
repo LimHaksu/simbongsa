@@ -2,12 +2,19 @@ import React, { Component } from "react";
 import { Label, Icon } from 'semantic-ui-react';
 import "./PostLabel.scss";
 
-interface IProps {
+interface Props {
   pStats: string;
 }
 
-export default class CertLabel extends Component<IProps, any> {
-  state = { message: "" };
+interface State {
+  message: string;
+}
+
+export default class CertLabel extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.setState({ message: "" });
+  }
   componentDidMount() {
     const { pStats } = this.props;
     if (pStats === "1") {
@@ -19,9 +26,10 @@ export default class CertLabel extends Component<IProps, any> {
 
   render() {
     const { pStats } = this.props;
+    const { message } = this.state;
     return (
       <div style={{ display: "inline" }}>
-        <Label className={pStats === "1" ? "recruit" : "review"} size='tiny' as='a'>{this.state.message}</Label>
+        <Label className={pStats === "1" ? "recruit" : "review"} size='tiny' as='a'>{message}</Label>
       </div>
     );
   }

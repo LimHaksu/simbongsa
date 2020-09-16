@@ -2,18 +2,16 @@ import React from "react";
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { Button } from "semantic-ui-react";
 
-interface IProps extends RouteComponentProps {
+interface Props extends RouteComponentProps {
   text: string;
 }
-
-class GoBackButton extends React.Component<IProps, {}> {
-  render() {
-    return (
-      <Button color="orange" onClick={this.props.history.goBack}>
-        {this.props.text}
-      </Button>
-    );
-  }
+const GoBackButton = (props: Props) => {
+  const { text, history } = props;
+  return (
+    <Button color="orange" onClick={history.goBack}>
+      {text}
+    </Button>
+  );
 }
 
 export default withRouter(GoBackButton);

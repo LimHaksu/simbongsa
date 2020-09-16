@@ -63,6 +63,7 @@ class Router extends Component {
 
         {/* 시작페이지 */}
         <Route exact path="/" component={Intro} />
+        <Route exact path="/simbongsa" component={Intro} />
 
         {/* 로그인 */}
         <Route exact path="/login" component={Login} />

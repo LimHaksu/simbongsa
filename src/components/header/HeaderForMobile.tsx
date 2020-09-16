@@ -11,7 +11,7 @@ import logo2 from 'assets/images/logo2.png';
 
 interface Props { }
 
-interface IState {
+interface State {
   activeItem: string;
 }
 export interface IAppProps {
@@ -21,7 +21,7 @@ export interface IAppProps {
 
 class HeaderForMobile extends React.Component<
   IAppProps & any,
-  IState
+  State
   >
 {
 

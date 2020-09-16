@@ -112,8 +112,6 @@ class PostingForm extends React.Component<any, any> {
 
     render() {
         const { selectedFiles, p_content } = this.props.form;
-        var v_id = this.props.match.params.id
-
         return (
             <Container>
                 <Form>
@@ -122,13 +120,13 @@ class PostingForm extends React.Component<any, any> {
                             onChange={this.handleStatusChange}
                         />
                     모집
-            </label>
+                    </label>
                     <label>
                         <input type="radio" value="2" checked={this.state.p_status === "2"}
                             onChange={this.handleStatusChange}
                         />
                     후기
-            </label>
+                    </label>
                     <TextArea
                         value={p_content}
                         className="posting"
@@ -147,8 +145,7 @@ class PostingForm extends React.Component<any, any> {
                     <div className="buttons">
                         <Button onClick={this.handleSubmit}>
                             게시글 등록하기
-            </Button>
-
+                        </Button>
                         <GoBackButton
                             text="취소하기"
                         />

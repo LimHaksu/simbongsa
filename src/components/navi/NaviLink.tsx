@@ -1,16 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 
-const StyledLink = styled(Link)`
-`
-interface Iprops {
+interface Props {
     to: string
 }
-const NaviLink: React.FunctionComponent<Iprops> = ({ to, children }) => (
-
-    <StyledLink to={to}>{children}</StyledLink>
-
+const NaviLink: FunctionComponent<Props> = ({ to, children }) => (
+    <Link to={to}>{children}</Link>
 );
 
 export default NaviLink;

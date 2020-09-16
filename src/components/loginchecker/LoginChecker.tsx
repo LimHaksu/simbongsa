@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import storage from "lib/storage";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -9,12 +9,10 @@ interface Props {
   AuthActions: any;
   loginCheck: boolean;
 }
-interface State { }
 
 // 토큰이 존재 하지 않음 === 로그인 안함
 // 로그인 안한 사람이 로그인이 필요한 페이지 접근시 강제로 인트로 페이지로 보냄
-class LoginChecker extends Component<Props, State> {
-  state = {};
+class LoginChecker extends Component<Props> {
   componentDidMount() {
 
     const { AuthActions, loginCheck } = this.props;
@@ -26,7 +24,7 @@ class LoginChecker extends Component<Props, State> {
     // 토큰이 존재 하지 않음 === 로그인 안함
     // 로그인 안한 사람이 로그인이 필요한 페이지 접근시 강제로 인트로 페이지로 보냄
     const needAuthUrl = /\bmainpage\b|\bfeed\b|\bmypage\b|\busersetting\b|\bcalendar\b|\buser\b|\bfollow\b/;
-    if (!loginCheck &&token !== null && token.split('.')[0] === 'eyJhbGciOiJIUzUxMiJ9') {
+    if (!loginCheck && token !== null && token.split('.')[0] === 'eyJhbGciOiJIUzUxMiJ9') {
       AuthActions.loginCheck(true);
     }
     else if (token === "EmailAuthenticateNeed") {
@@ -39,7 +37,7 @@ class LoginChecker extends Component<Props, State> {
       }
   }
   componentDidUpdate() {
-    const { AuthActions, loginCheck} = this.props;
+    const { AuthActions, loginCheck } = this.props;
     const url = window.location.href.split(
       `${process.env.REACT_APP_FRONT_URI!}/`
     )[1];
@@ -59,7 +57,7 @@ class LoginChecker extends Component<Props, State> {
     }
   }
   render() {
-    return <div></div>;
+    return <Fragment />;
   }
 }
 

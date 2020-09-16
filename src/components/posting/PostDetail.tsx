@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from "react-redux";
 
-import { Image, Label, Icon, Divider, Loader } from 'semantic-ui-react'
+import { Label, Icon, Divider } from 'semantic-ui-react'
 import Carousel from 'nuka-carousel';
 
 import CommentList from 'components/posting/CommentList'
@@ -11,7 +11,6 @@ import './Carousel.css'
 import './PostDetail.css'
 import * as VolApi from 'lib/api/VolApi';
 import * as PostingApi from 'lib/api/PostingApi';
-import { Link } from 'react-router-dom';
 import Vol from 'components/vol/Vol';
 const restBaseApi = process.env.REACT_APP_REST_BASE_API!;
 
@@ -26,16 +25,16 @@ interface Props {
         post_vote_members: Array<any>,
         vote_cnt: number,
         userId: string,
-        files: []
+        files: any[]
     };
     setUpdateFlag: (flag: boolean) => void;
 }
-interface Istate {
+interface State {
     volunteer: any
     updateFlag: boolean;
 }
 
-class PostDetail extends React.Component<Props & any, Istate> {
+class PostDetail extends React.Component<Props & any, State> {
     state = { volunteer: null, updateFlag: false }
     handleVote(id: number) {
         var { m_id } = this.props.user.toJS()
@@ -136,12 +135,6 @@ class PostDetail extends React.Component<Props & any, Istate> {
                     </div>
 
                     <Vol volunteer={volunteer} v_id={this.props.post.v_id} ></Vol>
-                    {/* <Link to={{ pathname: `/vol/${this.props.post.v_id}/detail` }}>
-                        <p style={{ textAlign: "center", padding: "0.5rem", color: "rgb(100, 100, 100)" }}>
-                            상세정보로 이동
-                        </p>
-                    </Link>
-                    <Divider /> */}
                     <div className="comment">
                         <CommentList inP_id={this.props.post.p_id} updateFlag={updateFlag} />
                         <CommentForm inP_id={this.props.post.p_id} handleUpdateFlag={this.handleUpdateFlag} />

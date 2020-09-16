@@ -22,17 +22,17 @@ const styles = {
   }
 };
 
-interface Iprops {
+interface Props {
   classes: {
     root: string;
     menuButton: string;
   };
 }
-interface Istate {
+interface State {
   toggle: boolean;
 }
 
-class TemporaryDrawer extends React.Component<Iprops, Istate> {
+class TemporaryDrawer extends React.Component<Props, State> {
   state = {
     toggle: false
   };

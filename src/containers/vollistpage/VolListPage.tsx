@@ -6,6 +6,7 @@ import * as volActions from "redux/modules/vol";
 import * as searchActions from "redux/modules/search";
 import * as userActions from "redux/modules/user";
 import { bindActionCreators } from "redux";
+
 interface Props {
   volunteersForList: List<any>;
   input: string;
@@ -16,13 +17,10 @@ interface Props {
   categorys: any;
   times: any;
 }
-interface State { }
 
-class VolListPage extends Component<Props, State> {
+class VolListPage extends Component<Props> {
   state = {
     pageNum: 1
-    // width: window.innerWidth,
-    // height: window.innerHeight - 345
   };
 
   shouldComponentUpdate(nextProps: any) {
@@ -97,18 +95,6 @@ class VolListPage extends Component<Props, State> {
       UserActions.changeLoading(false);
     }
   };
-
-  // 화면 크기를 바꿀 때 높이 동적 반영에 필요한 코드
-  // updateDimensions = () => {
-  //   this.setState({
-  //     width: window.innerWidth,
-  //     height: window.innerHeight - 345
-  //   });
-  // };
-  // // 화면 크기를 바꿀 때 높이 동적 반영에 필요한 코드
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.updateDimensions);
-  // }
 
   render() {
     const { volunteersForList } = this.props;

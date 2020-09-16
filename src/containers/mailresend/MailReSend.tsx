@@ -10,7 +10,7 @@ import * as AuthApi from "lib/api/AuthApi";
 import { debounce } from "lodash";
 import { Container, Button, Form, Segment, Dimmer, Loader } from 'semantic-ui-react'
 import AuthError from 'components/error/AuthError'
-interface IProps {
+interface Props {
   AuthActions: any;
   location: {
     state: {
@@ -21,7 +21,7 @@ interface IProps {
   email: string;
   history: any;
 }
-interface IState {
+interface State {
   email: string;
   error: {
     email: string;
@@ -30,7 +30,7 @@ interface IState {
   component: MailReSend;
   isMailSending: boolean;
 }
-class MailReSend extends React.Component<IProps, IState> {
+class MailReSend extends React.Component<Props, State> {
   state = {
     email: "",
     error: {
@@ -76,7 +76,7 @@ class MailReSend extends React.Component<IProps, IState> {
   // 중복 체크
 
   handleSend = async () => {
-    const { isMailSending, email } = this.state;
+    const { email } = this.state;
     const { history } = this.props;
     try {
       this.setState({ isMailSending: true }, async () => {

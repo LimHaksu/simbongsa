@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Vol from "components/vol/Vol";
 import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -6,18 +6,20 @@ interface Props {
   volunteers: any[];
   width?: number;
   height: string;
-  appendList: () => void; // volunteers 에 10개를 더 붙여주는 함수.
+  appendList?: () => void; // volunteers 에 10개를 더 붙여주는 함수.
   loadingMessage: string;
 }
 interface State { }
 
-export default class VolList extends React.Component<Props, State> {
+export default class VolList extends Component<Props, State> {
   state = {
     pageNum: 1
   };
   loadMoreData = () => {
-    this.setState({ pageNum: this.state.pageNum + 1 });
-    this.props.appendList();
+    if (this.props.appendList !== undefined) {
+      this.setState({ pageNum: this.state.pageNum + 1 });
+      this.props.appendList();
+    }
   };
   render() {
     const { volunteers } = this.props;
