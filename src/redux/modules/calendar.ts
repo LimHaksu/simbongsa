@@ -1,4 +1,4 @@
-import { createAction, handleActions } from "redux-actions";
+import { createAction, handleActions, Action } from "redux-actions";
 import moment, { Moment as MomentTypes } from "moment";
 import produce from "immer";
 const DATE_CHANGE = "calendar/DATE_CHANGE";
@@ -16,15 +16,17 @@ const initialState: CalendarState = {
   toggle: false
 };
 
-export default handleActions<any>(
+type Payload = Date | boolean;
+
+export default handleActions<CalendarState, Payload>(
   {
-    [DATE_CHANGE]: (state, action: any) => {
-      return produce(state, (draft: any) => {
+    [DATE_CHANGE]: (state, action: Action<Payload>) => {
+      return produce(state, (draft: { date: Payload }) => {
         draft.date = action.payload;
       });
     },
-    [TOGGLE_CHANGE]: (state, action: any) => {
-      return produce(state, (draft: any) => {
+    [TOGGLE_CHANGE]: (state, action: Action<Payload>) => {
+      return produce(state, (draft: { toggle: Payload }) => {
         draft.toggle = action.payload;
       });
     }
