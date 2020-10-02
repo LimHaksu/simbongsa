@@ -1,7 +1,5 @@
 ## 心봉사
 
-https://limhaksu.github.io/simbongsa/
-
 #### 지도
 <img src="https://user-images.githubusercontent.com/32071079/94888129-14d39600-04b3-11eb-82c2-76b546fb69d2.gif" width="300px" />  
 
